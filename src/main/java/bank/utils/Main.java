@@ -1,9 +1,10 @@
 package bank.utils;
 
 import bank.entity.*;
-import java.util.Date;
 import bank.entity.additionalClasses.FullName;
 import bank.entity.additionalClasses.Status;
+
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
