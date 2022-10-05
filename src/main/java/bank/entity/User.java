@@ -2,9 +2,9 @@ package bank.entity;
 
 import java.util.Date;
 import java.util.Random;
-import bank.entity.additionalClasses.FullName;
+import bank.utils.FullName;
 
-public class User extends Bank{
+public class User{
     private Integer id;
     private FullName fullName;
     private Date birthDay;
@@ -12,8 +12,7 @@ public class User extends Bank{
     private Double monthSalary;
     private Integer creditRating;
 
-    public User(Bank bankInstance, Integer id, FullName fullName, Date birthDay, String workPlace) {
-        super(bankInstance);
+    public User(Integer id, FullName fullName, Date birthDay, String workPlace) {
         this.setIdUser(id);
         this.setFullName(fullName);
         this.setBirthDay(birthDay);
@@ -32,16 +31,6 @@ public class User extends Bank{
             }
         }
         this.setCreditRating(creditRating);
-    }
-
-    public User(User userInstance) {
-        super(userInstance);
-        this.setIdUser(userInstance.getIdUser());
-        this.setFullName(userInstance.getFullName());
-        this.setBirthDay(userInstance.getBirthDay());
-        this.setWorkPlace(userInstance.getWorkPlace());
-        this.setMonthSalary(userInstance.getMonthSalary());
-        this.setCreditRating(userInstance.getCreditRating());
     }
 
     public Integer getIdUser() {

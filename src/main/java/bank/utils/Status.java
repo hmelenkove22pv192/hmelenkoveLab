@@ -1,4 +1,4 @@
-package bank.entity.additionalClasses;
+package bank.utils;
 
 public class Status {
     public static int Work = 1;

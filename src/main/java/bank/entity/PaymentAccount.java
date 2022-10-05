@@ -1,23 +1,32 @@
 package bank.entity;
 
-public class PaymentAccount extends Bank {
+import bank.utils.FullName;
+
+public class PaymentAccount{
+    private User user;
+    private Bank bank;
     private Integer id;
+    private FullName userName;
+    private String bankName;
     private Double money;
 
-    private Integer userId;
-
-    public PaymentAccount(Bank bankInstance, Integer id, Integer userId) {
-        super(bankInstance);
+    public PaymentAccount(Bank bank, User user, Integer id) {
+        this.setUser(user);
+        this.setBank(bank);
         this.setIdPayAcc(id);
-        this.setUserIdPayAcc(userId);
+        this.setUserName();
+        this.setBankName();
         this.setMoney(0.0);
     }
 
-    public PaymentAccount(PaymentAccount payAccInstance) {
-        super(payAccInstance);
-        this.setIdPayAcc(payAccInstance.getIdPayAcc());
-        this.setUserIdPayAcc(payAccInstance.getUserIdPayAcc());
-        this.setMoney(payAccInstance.getMoney());
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Bank getBank() { return bank;}
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 
     public Integer getIdPayAcc() {
@@ -28,12 +37,20 @@ public class PaymentAccount extends Bank {
         this.id = id;
     }
 
-    public Integer getUserIdPayAcc() {
-        return userId;
+    public FullName getUserName() {
+        return userName;
     }
 
-    public void setUserIdPayAcc(Integer userId) {
-        this.userId = userId;
+    public void setUserName() {
+        this.userName = user.getFullName();
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName() {
+        this.bankName = bank.getName();
     }
 
     public Double getMoney() {

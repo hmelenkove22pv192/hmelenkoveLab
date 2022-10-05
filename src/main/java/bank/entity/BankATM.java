@@ -1,26 +1,33 @@
 package bank.entity;
 
-public class BankATM extends BankOffice {
+public class BankATM {
+    private BankOffice office;
     private Integer id;
     private String name;
     private Integer status;
+    private String address;
     private Integer employeeId;
     private Boolean canGiveMoney;
     private Boolean canDepositMoney;
     private Double money;
     private Double cost;
 
-    public BankATM(BankOffice officeInstance, Integer id, String name, Integer status, Integer employeeId,
+    public BankATM(BankOffice office, Integer id, String name, Integer status, Integer employeeId,
                    Boolean canGiveMoney, Boolean canDepositMoney, Double money, Double cost) {
-        super(officeInstance);
+        setOffice(office);
         setId(id);
         setName(name);
         setStatus(status);
+        setAddress();
         setEmployeeId(employeeId);
         setCanGiveMoney(canGiveMoney);
         setCanDepositMoney(canDepositMoney);
         setMoney(money);
         setCost(cost);
+    }
+
+    public void setOffice(BankOffice office) {
+        this.office = office;
     }
 
     public Integer getId() {
@@ -45,6 +52,12 @@ public class BankATM extends BankOffice {
 
     public void setStatus(Integer statusATM) {
         this.status = statusATM;
+    }
+
+    public String getAddress() { return address; }
+
+    public void setAddress() {
+        this.address = office.getAddress();
     }
 
     public Integer getEmployeeId() {

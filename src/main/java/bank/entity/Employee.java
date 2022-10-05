@@ -1,38 +1,42 @@
 package bank.entity;
 
 import java.util.Date;
-import bank.entity.additionalClasses.FullName;
+import bank.utils.FullName;
 
-public class Employee extends BankOffice{
+public class Employee{
+    private Bank bank;
+    private BankOffice office;
     private Integer id;
     private FullName fullName;
     private Date birthDay;
     private String jobTitle;
+    private String bankName;
     private Boolean isDistantWorker;
+    private Integer officeId;
     private Boolean canGiveCredit;
     private Double salary;
 
-    public Employee(BankOffice officeInstance, Integer id, FullName fullName, Date birthDay, String jobTitle,
+    public Employee(Bank bank, BankOffice office,Integer id, FullName fullName, Date birthDay, String jobTitle,
                     Boolean isDistantWorker, Boolean canGiveCredit, Double salary) {
-        super(officeInstance);
+        this.setBank(bank);
+        this.setOffice(office);
         this.setIdEmployee(id);
         this.setFullName(fullName);
         this.setBirthDay(birthDay);
         this.setJobTitle(jobTitle);
+        this.setBankName();
         this.setIsDistantWorker(isDistantWorker);
+        this.setOfficeId();
         this.setCanGiveCredit(canGiveCredit);
         this.setSalary(salary);
     }
 
-    public Employee(Employee employeeInstance) {
-        super(employeeInstance);
-        this.setIdEmployee(employeeInstance.getIdEmployee());
-        this.setFullName(employeeInstance.getFullName());
-        this.setBirthDay(employeeInstance.getBirthDay());
-        this.setJobTitle(employeeInstance.getJobTitle());
-        this.setIsDistantWorker(employeeInstance.getIsDistantWorker());
-        this.setCanGiveCredit(employeeInstance.getCanGiveCredit());
-        this.setSalary(employeeInstance.getSalary());
+    public void setOffice(BankOffice office) {
+        this.office = office;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 
     public Integer getIdEmployee() {
@@ -67,12 +71,28 @@ public class Employee extends BankOffice{
         this.jobTitle = jobTitle;
     }
 
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName() {
+        this.bankName = bank.getName();
+    }
+
     public Boolean getIsDistantWorker() {
         return isDistantWorker;
     }
 
     public void setIsDistantWorker(Boolean isDistantWorker) {
         this.isDistantWorker = isDistantWorker;
+    }
+
+    public Integer getOfficeId() {
+        return officeId;
+    }
+
+    public void setOfficeId() {
+        this.officeId = office.getId();
     }
 
     public Boolean getCanGiveCredit() {
