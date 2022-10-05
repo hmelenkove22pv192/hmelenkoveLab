@@ -30,21 +30,6 @@ public class BankOffice extends Bank{
         this.setCost(cost);
     }
 
-    public BankOffice(BankOffice officeInstance) {
-        super(officeInstance);
-        this.setId(officeInstance.getId());
-        this.setName(officeInstance.getName());
-        this.setAddress(officeInstance.getAddress());
-        this.setStatus(officeInstance.getStatus());
-        this.setCanSetATM(officeInstance.getCanSetATM());
-        this.setCountATM(officeInstance.getCountATM());
-        this.setCanTakeCredit(officeInstance.getCanTakeCredit());
-        this.setCanGiveMoney(officeInstance.getCanGiveMoney());
-        this.setCanDepositMoney(officeInstance.getCanDepositMoney());
-        this.setMoney(officeInstance.getMoney());
-        this.setCost(officeInstance.getCost());
-    }
-
     public Integer getId() {
         return id;
     }

@@ -1,24 +1,60 @@
 package bank.entity;
 
+import bank.utils.FullName;
+
 import java.util.Date;
 
-public class CreditAccount extends Bank {
+public class CreditAccount {
+    private User user;
+    private Bank bank;
+    private Employee employee;
+    private PaymentAccount paymentAccount;
     private Integer id;
+    private FullName userName;
+    private String bankName;
     private Date startDate;
     private Date endDate;
     private Integer countMonth;
     private Double creditSum;
-    private Integer employeeId;
+    private Double interestRate;
+    private Double monthPay;
+    private FullName employeeName;
+    private Integer paymentAccountId;
 
-    public CreditAccount(Bank bankInstance, Integer id, Date startDate, Date endDate, Integer countMonth,
-                         Double creditSum, Integer employeeId) {
-        super(bankInstance);
-        this.setId(id);
-        this.setStartDate(startDate);
-        this.setEndDate(endDate);
-        this.setCountMonth(countMonth);
-        this.setCreditSum(creditSum);
-        this.setEmployeeId(employeeId);
+    public CreditAccount(Bank bank, User user, Employee employee, PaymentAccount paymentAccount,
+                         Integer id, Date startDate, Date endDate, Integer countMonth,
+                         Double creditSum, Double monthPay) {
+        setBank(bank);
+        setUser(user);
+        setEmployee(employee);
+        setPaymentAccount(paymentAccount);
+        setId(id);
+        setUserName();
+        setBankName();
+        setStartDate(startDate);
+        setEndDate(endDate);
+        setCountMonth(countMonth);
+        setCreditSum(creditSum);
+        setInterestRate();
+        setMonthPay(monthPay);
+        setEmployeeName();
+        setPaymentAccountId();
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public void setPaymentAccount(PaymentAccount paymentAccount) {
+        this.paymentAccount = paymentAccount;
     }
 
     public Integer getId() {
@@ -27,6 +63,22 @@ public class CreditAccount extends Bank {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public FullName getUserName() {
+        return userName;
+    }
+
+    public void setUserName() {
+        this.userName = user.getFullName();
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName() {
+        this.bankName = bank.getName();
     }
 
     public Date getStartDate() {
@@ -61,11 +113,35 @@ public class CreditAccount extends Bank {
         this.creditSum = creditSum;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
+    public Double getInterestRate() {
+        return interestRate;
     }
 
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
+    public void setInterestRate() {
+        this.interestRate = bank.getInterestRate();
+    }
+
+    public Double getMonthPay() {
+        return monthPay;
+    }
+
+    public void setMonthPay(Double monthPay) {
+        this.monthPay = monthPay;
+    }
+
+    public FullName getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName() {
+        this.employeeName = employee.getFullName();
+    }
+
+    public Integer getPaymentAccountId() {
+        return paymentAccountId;
+    }
+
+    public void setPaymentAccountId() {
+        this.paymentAccountId = paymentAccount.getIdPayAcc();
     }
 }
