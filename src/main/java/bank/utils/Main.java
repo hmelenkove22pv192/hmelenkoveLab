@@ -77,7 +77,8 @@ public class Main {
         creditAccImpl.updateCreditPayAcc(creditAcc,payAcc);
         creditAccImpl.readCreditAcc(creditAcc);
 
-        //delete
+        // Экземпляры хранятся только в памяти приложения.
+        // После присваивания null ссылки не будет, поэтому сброщик мусора удалит эти объекты
         bank = null;
         office = null;
         atm = null;
@@ -85,5 +86,12 @@ public class Main {
         user = null;
         creditAcc = null;
         payAcc = null;
+        System.out.println(bank);
+        System.out.println(office);
+        System.out.println(atm);
+        System.out.println(employee);
+        System.out.println(user);
+        System.out.println(creditAcc);
+        System.out.println(payAcc);
     }
 }

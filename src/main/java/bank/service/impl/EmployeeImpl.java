@@ -20,7 +20,7 @@ public class EmployeeImpl implements EmployeeService {
 
     @Override
     public void readEmployee(Employee employee) {
-        System.out.println(employee.toString());
+        System.out.println(employee);
     }
 
     @Override

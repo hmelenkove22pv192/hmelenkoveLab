@@ -12,7 +12,7 @@ public class BankImpl implements BankService {
 
     @Override
     public void readBank(Bank bank) {
-        System.out.println(bank.toString());
+        System.out.println(bank);
     }
 
     @Override

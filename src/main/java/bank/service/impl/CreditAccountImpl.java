@@ -17,7 +17,7 @@ public class CreditAccountImpl implements CreditAccountService {
 
     @Override
     public void readCreditAcc(CreditAccount creditAcc) {
-        System.out.println(creditAcc.toString());
+        System.out.println(creditAcc);
     }
 
     @Override

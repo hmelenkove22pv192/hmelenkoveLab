@@ -17,7 +17,7 @@ public class AtmImpl implements AtmService {
 
     @Override
     public void readATM(BankATM atm) {
-        System.out.println(atm.toString());
+        System.out.println(atm);
     }
     @Override
     public void updateATMStatusOfWorking(BankATM atm, Status status) {

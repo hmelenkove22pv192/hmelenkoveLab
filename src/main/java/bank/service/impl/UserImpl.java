@@ -14,7 +14,7 @@ public class UserImpl implements UserService {
 
     @Override
     public void readUser(User user) {
-        System.out.println(user.toString());
+        System.out.println(user);
     }
 
     @Override

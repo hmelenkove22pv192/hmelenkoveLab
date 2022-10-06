@@ -14,7 +14,7 @@ public class PaymentAccountImpl implements PaymentAccountService {
 
     @Override
     public void readPayAcc(PaymentAccount payAcc) {
-        System.out.println(payAcc.toString());
+        System.out.println(payAcc);
     }
 
     @Override

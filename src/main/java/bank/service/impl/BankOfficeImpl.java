@@ -20,17 +20,7 @@ public class BankOfficeImpl implements BankOfficeService {
 
     @Override
     public void readOffice(BankOffice office) {
-        System.out.println("id: " + office.getId());
-        System.out.println("name: " + office.getName());
-        System.out.println("address: " + office.getAddress());
-        System.out.println("countATM: " + office.getCountATM());
-        System.out.println("status: " + office.getStatus());
-        System.out.println("canSetATM: " + office.getCanSetATM());
-        System.out.println("canTakeCredit: " + office.getCanTakeCredit());
-        System.out.println("canGiveMoney: " + office.getCanGiveMoney());
-        System.out.println("canDepositMoney: " + office.getCanDepositMoney());
-        System.out.println("money: " + office.getMoney());
-        System.out.println("cost: " + office.getCost());
+        System.out.println(office);
     }
 
     @Override
