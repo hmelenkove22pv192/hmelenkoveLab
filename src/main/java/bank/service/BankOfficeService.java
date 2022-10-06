@@ -29,26 +29,31 @@ public interface BankOfficeService {
     void readOffice(BankOffice office);
     /**
      * обновление статуса работы BankOffice
+     * @param office экземпляр класса BankOffice
      * @param status статус работы офиса (работает/не работает)
      * */
     void updateOfficeStatusOfWorking(BankOffice office, Status status);
     /**
      * обновление статуса выдачи денег BankOffice
+     * @param office экземпляр класса BankOffice
      * @param canGiveMoney флаг статуса (0 - офис не может выдавать деньги, 1 - может выдавать)
      * */
     void updateOfficeStatusOfGiving(BankOffice office, Boolean canGiveMoney);
     /**
      * обновление статуса вноса денег BankOffice
+     * @param office экземпляр класса BankOffice
      * @param canDepositMoney флаг статуса (0 - офис не может принимать деньги, 1 - может принимать)
      * */
     void updateOfficeStatusOfDeposit(BankOffice office, Boolean canDepositMoney);
     /**
      * обновление статуса выдачи кредитов BankOffice
+     * @param office экземпляр класса BankOffice
      * @param canTakeCredit флаг статуса (0 - офис не может выдавать кредиты, 1 - может выдавать кредиты)
      * */
     void updateOfficeStatusOfCredit(BankOffice office, Boolean canTakeCredit);
     /**
      * обновление статуса установки банкоматов BankOffice
+     * @param office экземпляр класса BankOffice
      * @param canSetATM флаг статуса (0 - офис не может поставить банкомат, 1 - может поставить)
      * */
     void updateOfficeStatusOfSetATM(BankOffice office, Boolean canSetATM);
