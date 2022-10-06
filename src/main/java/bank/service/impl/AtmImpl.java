@@ -39,6 +39,7 @@ public class AtmImpl implements AtmService {
 
     /**
      * обновление статуса работы BankATM
+     * @param atm экземпляр класса BankATM
      * @param status статус работы банкомата (работает/не работает/нет денег)
      * */
     @Override
@@ -48,6 +49,7 @@ public class AtmImpl implements AtmService {
 
     /**
      * обновление статуса выдачи денег BankATM
+     * @param atm экземпляр класса BankATM
      * @param canGiveMoney флаг статуса (0 - банкомат не может выдавать деньги, 1 - может выдавать)
      * */
     @Override
@@ -57,6 +59,7 @@ public class AtmImpl implements AtmService {
 
     /**
      * обновление статуса вноса денег BankATM
+     * @param atm экземпляр класса BankATM
      * @param canDepositMoney флаг статуса (0 - банкомат не может принимать деньги, 1 - может принимать)
      * */
     @Override

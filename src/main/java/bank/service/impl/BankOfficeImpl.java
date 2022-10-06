@@ -42,6 +42,7 @@ public class BankOfficeImpl implements BankOfficeService {
 
     /**
      * обновление статуса работы BankOffice
+     * @param office экземпляр класса BankOffice
      * @param status статус работы офиса (работает/не работает)
      * */
     @Override
@@ -51,6 +52,7 @@ public class BankOfficeImpl implements BankOfficeService {
 
     /**
      * обновление статуса выдачи денег BankOffice
+     * @param office экземпляр класса BankOffice
      * @param canGiveMoney флаг статуса (0 - офис не может выдавать деньги, 1 - может выдавать)
      * */
     @Override
@@ -60,6 +62,7 @@ public class BankOfficeImpl implements BankOfficeService {
 
     /**
      * обновление статуса вноса денег BankOffice
+     * @param office экземпляр класса BankOffice
      * @param canDepositMoney флаг статуса (0 - офис не может принимать деньги, 1 - может принимать)
      * */
     @Override
@@ -69,6 +72,7 @@ public class BankOfficeImpl implements BankOfficeService {
 
     /**
      * обновление статуса выдачи кредитов BankOffice
+     * @param office экземпляр класса BankOffice
      * @param canTakeCredit флаг статуса (0 - офис не может выдавать кредиты, 1 - может выдавать кредиты)
      * */
     @Override
@@ -78,6 +82,7 @@ public class BankOfficeImpl implements BankOfficeService {
 
     /**
      * обновление статуса установки банкоматов BankOffice
+     * @param office экземпляр класса BankOffice
      * @param canSetATM флаг статуса (0 - офис не может поставить банкомат, 1 - может поставить)
      * */
     @Override

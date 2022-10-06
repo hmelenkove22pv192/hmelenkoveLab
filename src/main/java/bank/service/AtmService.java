@@ -28,16 +28,19 @@ public interface AtmService {
     void readATM(BankATM atm);
     /**
      * обновление статуса работы BankATM
+     * @param atm экземпляр класса BankATM
      * @param status статус работы банкомата (работает/не работает/нет денег)
      * */
     void updateATMStatusOfWorking(BankATM atm, Status status);
     /**
      * обновление статуса выдачи денег BankATM
+     * @param atm экземпляр класса BankATM
      * @param canGiveMoney флаг статуса (0 - банкомат не может выдавать деньги, 1 - может выдавать)
      * */
     void updateATMStatusOfGiving(BankATM atm, Boolean canGiveMoney);
     /**
      * обновление статуса вноса денег BankATM
+     * @param atm экземпляр класса BankATM
      * @param canDepositMoney флаг статуса (0 - банкомат не может принимать деньги, 1 - может принимать)
      * */
     void updateATMStatusOfDeposit(BankATM atm, Boolean canDepositMoney);
