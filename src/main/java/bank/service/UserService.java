@@ -7,20 +7,21 @@ import java.util.Date;
 public interface UserService {
     /**
      * создание экземпляра класса User
-     * id - идентификатор клиента
-     * fullName - полное имя клиента
-     * birthDay - дата рождения клиента
-     * workPlace - место работы клиента
+     * @param id идентификатор клиента
+     * @param fullName полное имя клиента
+     * @param birthDay дата рождения клиента
+     * @param workPlace место работы клиента
      * */
     User createUser(Integer id, String fullName, Date birthDay, String workPlace);
     /**
      * вывод в консоль экземпляра класса User
+     * @param user экземпляр класса User
      * */
     void readUser(User user);
     /**
      * обновление места работы клиент
-     * user - экземпляр класса User
-     * workPlace - новое место работы
+     * @param user экземпляр класса User
+     * @param workPlace новое место работы
      * */
     void updateUserWork(User user, String workPlace);
 }

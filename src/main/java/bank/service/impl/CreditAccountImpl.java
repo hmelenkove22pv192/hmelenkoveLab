@@ -9,15 +9,15 @@ public class CreditAccountImpl implements CreditAccountService {
     public CreditAccountImpl(){}
     /**
      * создание экземпляра класса CreditAccount
-     * bank - экземпляр класса Bank
-     * user - экземпляр класса User
-     * employee - экземпляр класса Employee
-     * paymentAccount - экземпляр класса PaymentAccount
-     * id - идентификатор банкомата
-     * startDate - дата начала кредита
-     * endDate - дата окончания кредита
-     * creditSum - сумма кредита
-     * monthPay - ежемесячный платеж
+     * @param bank экземпляр класса Bank
+     * @param user экземпляр класса User
+     * @param employee экземпляр класса Employee
+     * @param paymentAccount экземпляр класса PaymentAccount
+     * @param id идентификатор банкомата
+     * @param startDate дата начала кредита
+     * @param endDate дата окончания кредита
+     * @param creditSum сумма кредита
+     * @param monthPay ежемесячный платеж
      * */
     @Override
     public CreditAccount createCreditAcc(Bank bank, User user, Employee employee,
@@ -29,6 +29,7 @@ public class CreditAccountImpl implements CreditAccountService {
 
     /**
      * вывод в консоль экземпляра класса CreditAccount
+     * @param creditAcc экземпляр класса CreditAccount
      * */
     @Override
     public void readCreditAcc(CreditAccount creditAcc) {
@@ -37,8 +38,8 @@ public class CreditAccountImpl implements CreditAccountService {
 
     /**
      * обновление платежного счета
-     * creditAcc - экземпляр класса CreditAccount
-     * payAcc - новый платежный счет
+     * @param creditAcc экземпляр класса CreditAccount
+     * @param payAcc новый платежный счет
      * */
     @Override
     public void updateCreditPayAcc(CreditAccount creditAcc, PaymentAccount payAcc) {

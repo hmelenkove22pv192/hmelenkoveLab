@@ -7,8 +7,8 @@ public class BankImpl implements BankService {
     public BankImpl(){}
     /**
      * создание экземпляра класса Bank
-     * id - идентификатор банка
-     * name - название банка
+     * @param id идентификатор банка
+     * @param name название банка
      * */
     @Override
     public Bank createBank(Integer id, String name) {
@@ -17,6 +17,7 @@ public class BankImpl implements BankService {
 
     /**
      * вывод в консоль экземпляра класса Bank
+     * @param bank экземпляр класса Bank
      * */
     @Override
     public void readBank(Bank bank) {
@@ -25,8 +26,8 @@ public class BankImpl implements BankService {
 
     /**
      * обновление названия банка
-     * bank - экземпляр класса Bank
-     * name - новое название банка
+     * @param bank экземпляр класса Bank
+     * @param name новое название банка
      * */
     @Override
     public void updateBankName(Bank bank, String name) {

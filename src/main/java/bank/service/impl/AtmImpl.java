@@ -10,16 +10,16 @@ public class AtmImpl implements AtmService {
     public AtmImpl(){}
     /**
      * создание экземпляра класса BankATM
-     * bank - экземпляр класса Bank
-     * office - экземпляр класса BankOffice
-     * id - идентификатор банкомата
-     * name - название банкомата
-     * status - статус банкомата (работает/не работает/нет денег)
-     * employeeId - идентификатор обслуживающего сотрудника
-     * canGiveMoney - может выдавать деньги (0 - нет, 1 - да)
-     * canDepositMoney - может принимать деньги (0 - нет, 1 - да)
-     * money - количество денег в банкомате
-     * cost - стоимость обслуживания банкомата
+     * @param bank экземпляр класса Bank
+     * @param office экземпляр класса BankOffice
+     * @param id идентификатор банкомата
+     * @param name название банкомата
+     * @param status статус банкомата (работает/не работает/нет денег)
+     * @param employeeId идентификатор обслуживающего сотрудника
+     * @param canGiveMoney может выдавать деньги (0 - нет, 1 - да)
+     * @param canDepositMoney может принимать деньги (0 - нет, 1 - да)
+     * @param money количество денег в банкомате
+     * @param cost стоимость обслуживания банкомата
      * */
     @Override
     public BankATM createATM(Bank bank, BankOffice office, Integer id, String name, Status status, Integer employeeId,
@@ -30,6 +30,7 @@ public class AtmImpl implements AtmService {
 
     /**
      * вывод в консоль экземпляра класса BankATM
+     * @param atm экземпляр класса BankATM
      * */
     @Override
     public void readATM(BankATM atm) {
@@ -38,7 +39,7 @@ public class AtmImpl implements AtmService {
 
     /**
      * обновление статуса работы BankATM
-     * status - статус работы банкомата (работает/не работает/нет денег)
+     * @param status статус работы банкомата (работает/не работает/нет денег)
      * */
     @Override
     public void updateATMStatusOfWorking(BankATM atm, Status status) {
@@ -47,7 +48,7 @@ public class AtmImpl implements AtmService {
 
     /**
      * обновление статуса выдачи денег BankATM
-     * canGiveMoney - флаг статуса (0 - банкомат не может выдавать деньги, 1 - может выдавать)
+     * @param canGiveMoney флаг статуса (0 - банкомат не может выдавать деньги, 1 - может выдавать)
      * */
     @Override
     public void updateATMStatusOfGiving(BankATM atm, Boolean canGiveMoney) {
@@ -56,7 +57,7 @@ public class AtmImpl implements AtmService {
 
     /**
      * обновление статуса вноса денег BankATM
-     * canDepositMoney - флаг статуса (0 - банкомат не может принимать деньги, 1 - может принимать)
+     * @param canDepositMoney флаг статуса (0 - банкомат не может принимать деньги, 1 - может принимать)
      * */
     @Override
     public void updateATMStatusOfDeposit(BankATM atm, Boolean canDepositMoney) {
@@ -67,6 +68,9 @@ public class AtmImpl implements AtmService {
      * обновление количества денег в BankATM
      * если в банке общее количество денег больше чем money, обновляем данные и возвращаем true,
      * иначе false
+     * @param atm экземпляр класса BankATM
+     * @param bank экземпляр класса Bank
+     * @param money
      * */
     @Override
     public boolean updateATMMoney(BankATM atm, Bank bank, Double money) {

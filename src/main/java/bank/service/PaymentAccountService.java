@@ -7,19 +7,20 @@ import bank.entity.User;
 public interface PaymentAccountService {
     /**
      * создание экземпляра класса PaymentAccount
-     * bank - экземпляр класса Bank
-     * user - экземпляр класса User
-     * id - идентификатор платежного счета
+     * @param bank экземпляр класса Bank
+     * @param user экземпляр класса User
+     * @param id идентификатор платежного счета
      * */
     PaymentAccount createPayAcc(Bank bank, User user, Integer id);
     /**
      * вывод в консоль экземпляра класса PaymentAccount
+     * @param payAcc экземпляр класса PaymentAccount
      * */
-    void readPayAcc(PaymentAccount paymentAccount);
+    void readPayAcc(PaymentAccount payAcc);
     /**
      * обновление суммы денег на счету
-     * paymentAccount - экземпляр класса PaymentAccount
-     * money - новая сумма
+     * @param payAcc экземпляр класса PaymentAccount
+     * @param money новая сумма
      * */
-    void updateMoney(PaymentAccount paymentAccount, Double money);
+    void updateMoney(PaymentAccount payAcc, Double money);
 }

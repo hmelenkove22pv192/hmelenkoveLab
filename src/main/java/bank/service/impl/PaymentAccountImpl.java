@@ -8,9 +8,9 @@ import bank.service.PaymentAccountService;
 public class PaymentAccountImpl implements PaymentAccountService {
     /**
      * создание экземпляра класса PaymentAccount
-     * bank - экземпляр класса Bank
-     * user - экземпляр класса User
-     * id - идентификатор платежного счета
+     * @param bank экземпляр класса Bank
+     * @param user экземпляр класса User
+     * @param id идентификатор платежного счета
      * */
     @Override
     public PaymentAccount createPayAcc(Bank bank, User user, Integer id) {
@@ -20,6 +20,7 @@ public class PaymentAccountImpl implements PaymentAccountService {
 
     /**
      * вывод в консоль экземпляра класса PaymentAccount
+     * @param payAcc экземпляр класса PaymentAccount
      * */
     @Override
     public void readPayAcc(PaymentAccount payAcc) {
@@ -28,8 +29,8 @@ public class PaymentAccountImpl implements PaymentAccountService {
 
     /**
      * обновление суммы денег на счету
-     * paymentAccount - экземпляр класса PaymentAccount
-     * money - новая сумма
+     * @param payAcc экземпляр класса PaymentAccount
+     * @param money новая сумма
      * */
     @Override
     public void updateMoney(PaymentAccount payAcc, Double money) {
