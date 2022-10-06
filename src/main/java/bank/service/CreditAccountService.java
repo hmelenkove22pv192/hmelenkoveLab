@@ -10,5 +10,4 @@ public interface CreditAccountService {
                                          Double creditSum, Double monthPay);
     void readCreditAcc(CreditAccount creditAcc);
     void updateCreditPayAcc(CreditAccount creditAcc, PaymentAccount payAcc);
-    void deleteCreditAcc(CreditAccount creditAcc);
 }

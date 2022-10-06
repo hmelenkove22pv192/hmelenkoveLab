@@ -6,5 +6,4 @@ public interface BankService {
     Bank createBank(Integer id, String name);
     void readBank(Bank bank);
     void updateBankName(Bank bank, String name);
-    void deleteBank(Bank bank);
 }

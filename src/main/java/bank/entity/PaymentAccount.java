@@ -1,12 +1,10 @@
 package bank.entity;
 
-import bank.utils.FullName;
-
 public class PaymentAccount{
     private User user;
     private Bank bank;
     private Integer id;
-    private FullName userName;
+    private String userName;
     private String bankName;
     private Double money;
 
@@ -37,7 +35,7 @@ public class PaymentAccount{
         this.id = id;
     }
 
-    public FullName getUserName() {
+    public String getUserName() {
         return userName;
     }
 
@@ -59,5 +57,14 @@ public class PaymentAccount{
 
     public void setMoney(Double money) {
         this.money = money;
+    }
+
+    public String toString(){
+        return (
+                    "id: " + getIdPayAcc() + "\n" +
+                    "money: " + getMoney() + "\n" +
+                    "user: " + getUserName() + "\n" +
+                    "bankName: " + getBankName()
+                );
     }
 }

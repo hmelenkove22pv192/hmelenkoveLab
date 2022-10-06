@@ -15,54 +15,50 @@ public class Main {
         bankImpl.readBank(bank);
         bankImpl.updateBankName(bank, "new_bank_name");
         bankImpl.readBank(bank);
-        bankImpl.deleteBank(bank);
 
         //BankOffice
         System.out.println("\nBankOffice\n");
         BankOfficeService bankOfficeImpl = new BankOfficeImpl();
-        BankOffice office = bankOfficeImpl.createOffice(bank, 1, "office_name", "address", Status.Work,
+        BankOffice office = bankOfficeImpl.createOffice(bank, 1, "office_name", "address", Status.WORK,
                 Boolean.TRUE, Boolean.TRUE, Boolean.TRUE, Boolean.TRUE,0.0,5.0);
         bankOfficeImpl.readOffice(office);
+        bankOfficeImpl.updateOfficeStatusOfWorking(office, Status.NOTWORK);
         bankOfficeImpl.updateOfficeStatusOfCredit(office, false);
         bankOfficeImpl.updateOfficeStatusOfDeposit(office, false);
         bankOfficeImpl.updateOfficeStatusOfGiving(office, false);
         bankOfficeImpl.updateOfficeStatusOfSetATM(office, false);
         bankOfficeImpl.readOffice(office);
-        bankOfficeImpl.deleteOffice(office, bank);
 
         //BankAtm
         System.out.println("\nBankAtm:\n");
         AtmService atmImpl = new AtmImpl();
-        BankATM atm = atmImpl.createATM(bank, office,1, "ATM_1", Status.Work, 1, Boolean.TRUE, Boolean.TRUE,
+        BankATM atm = atmImpl.createATM(bank, office,1, "ATM_1", Status.WORK, 1, Boolean.TRUE, Boolean.TRUE,
                 500.0, 50.0);
         atmImpl.readATM(atm);
         atmImpl.updateATMMoney(atm,bank,10.000);
         atmImpl.updateATMStatusOfDeposit(atm, false);
         atmImpl.updateATMStatusOfGiving(atm, false);
-        atmImpl.updateATMStatusOfWorking(atm, 2);
+        atmImpl.updateATMStatusOfWorking(atm, Status.NOMONEY);
         atmImpl.readATM(atm);
-        atmImpl.deleteATM(atm, bank);
 
         //Employee
         System.out.println("\nEmployee:\n");
         EmployeeService employeeImpl = new EmployeeImpl();
-        Employee employee = employeeImpl.createEmployee(bank, office, 1, new FullName("Ivan", "Ivanov"),
+        Employee employee = employeeImpl.createEmployee(bank, office, 1, "Ivan Ivanov",
                 new Date(), "employer_1", Boolean.TRUE, Boolean.TRUE, 100.000);
         employeeImpl.readEmployee(employee);
         employeeImpl.updateEmployeeDistant(employee, false);
         employeeImpl.updateEmployeeGiving(employee, false);
         employeeImpl.readEmployee(employee);
-        employeeImpl.deleteEmployee(employee, bank);
 
         //User
         System.out.println("\nUser:\n");
         UserService userImpl = new UserImpl();
-        User user = userImpl.createUser(1, new FullName("Petr", "Petrov"), new Date(),
+        User user = userImpl.createUser(1, "Petr Petrov", new Date(),
                 "work_1");
         userImpl.readUser(user);
         userImpl.updateUserWork(user, "new_work_1");
         userImpl.readUser(user);
-        userImpl.deleteUser(user);
 
         //PaymentAccount
         System.out.println("\nPaymentAccount:\n");
@@ -71,7 +67,6 @@ public class Main {
         payAccImpl.readPayAcc(payAcc);
         payAccImpl.updateMoney(payAcc,10.000);
         payAccImpl.readPayAcc(payAcc);
-        payAccImpl.deletePayAcc(payAcc, bank);
 
         //CreditAccount
         System.out.println("\nCreditAccount:");
@@ -81,6 +76,14 @@ public class Main {
         creditAccImpl.readCreditAcc(creditAcc);
         creditAccImpl.updateCreditPayAcc(creditAcc,payAcc);
         creditAccImpl.readCreditAcc(creditAcc);
-        creditAccImpl.deleteCreditAcc(creditAcc);
+
+        //delete
+        bank = null;
+        office = null;
+        atm = null;
+        employee = null;
+        user = null;
+        creditAcc = null;
+        payAcc = null;
     }
 }

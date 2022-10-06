@@ -1,10 +1,12 @@
 package bank.entity;
 
-public class BankOffice extends Bank{
+import bank.utils.*;
+
+public class BankOffice {
     private Integer id;
     private String name;
     private String address;
-    private Integer status;
+    private Status status;
     private Boolean canSetATM;
     private Integer countATM;
     private Boolean canTakeCredit;
@@ -13,10 +15,9 @@ public class BankOffice extends Bank{
     private Double money;
     private Double cost;
 
-    public BankOffice(Bank bankInstance, Integer id, String name, String address, Integer status,
+    public BankOffice(Integer id, String name, String address, Status status,
                       Boolean canSetATM, Boolean canTakeCredit, Boolean canGiveMoney,
                       Boolean canDepositMoney, Double money, Double cost) {
-        super(bankInstance);
         this.setId(id);
         this.setName(name);
         this.setAddress(address);
@@ -54,11 +55,11 @@ public class BankOffice extends Bank{
         this.address = address;
     }
 
-    public Integer getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -116,5 +117,21 @@ public class BankOffice extends Bank{
 
     public void setCost(Double cost) {
         this.cost = cost;
+    }
+
+    public String toString(){
+        return (
+                    "id: " + getId() + "\n" +
+                    "name: " + getName() + "\n" +
+                    "address: " + getAddress() + "\n" +
+                    "countATM: " + getCountATM() + "\n" +
+                    "status: " + getStatus() + "\n" +
+                    "canSetATM: " + getCanSetATM() + "\n" +
+                    "canTakeCredit: " + getCanTakeCredit() + "\n" +
+                    "canGiveMoney: " + getCanGiveMoney() + "\n" +
+                    "canDepositMoney: " + getCanDepositMoney() + "\n" +
+                    "money: " + getMoney() + "\n" +
+                    "cost: " + getCost()
+                );
     }
 }

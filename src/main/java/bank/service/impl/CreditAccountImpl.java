@@ -17,27 +17,11 @@ public class CreditAccountImpl implements CreditAccountService {
 
     @Override
     public void readCreditAcc(CreditAccount creditAcc) {
-        System.out.println("id: " + creditAcc.getId());
-        System.out.println("userName: " + creditAcc.getUserName());
-        System.out.println("bankName: " + creditAcc.getBankName());
-        System.out.println("startDate: " + creditAcc.getStartDate());
-        System.out.println("endDate: " + creditAcc.getEndDate());
-        System.out.println("countMonth: " + creditAcc.getCountMonth());
-        System.out.println("creditSum: " + creditAcc.getCreditSum());
-        System.out.println("interestRate: " + creditAcc.getInterestRate());
-        System.out.println("employee: " + creditAcc.getEmployeeName());
-        System.out.println("interestRate: " + creditAcc.getInterestRate());
-        System.out.println("monthPay: " + creditAcc.getMonthPay());
-        System.out.println("paymentAccountId: " + creditAcc.getPaymentAccountId());
+        System.out.println(creditAcc.toString());
     }
 
     @Override
     public void updateCreditPayAcc(CreditAccount creditAcc, PaymentAccount payAcc) {
         creditAcc.setPaymentAccount(payAcc);
-    }
-
-    @Override
-    public void deleteCreditAcc(CreditAccount creditAcc) {
-        creditAcc = null;
     }
 }

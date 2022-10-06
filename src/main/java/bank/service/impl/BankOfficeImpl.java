@@ -3,17 +3,18 @@ package bank.service.impl;
 import bank.entity.Bank;
 import bank.entity.BankOffice;
 import bank.service.BankOfficeService;
+import bank.utils.Status;
 
 public class BankOfficeImpl implements BankOfficeService {
 
     public BankOfficeImpl(){}
 
     @Override
-    public BankOffice createOffice(Bank bank, Integer id, String name, String address, Integer status,
+    public BankOffice createOffice(Bank bank, Integer id, String name, String address, Status status,
                                    Boolean canSetATM, Boolean canTakeCredit, Boolean canGiveMoney,
                                    Boolean canDepositMoney, Double money, Double cost) {
         bank.setCountOffice(bank.getCountOffice() + 1);
-        return new BankOffice(bank, id, name, address, status, canSetATM, canTakeCredit, canGiveMoney,
+        return new BankOffice(id, name, address, status, canSetATM, canTakeCredit, canGiveMoney,
                 canDepositMoney, money, cost);
     }
 
@@ -33,7 +34,7 @@ public class BankOfficeImpl implements BankOfficeService {
     }
 
     @Override
-    public void updateOfficeStatusOfWorking(BankOffice office, Integer status) {
+    public void updateOfficeStatusOfWorking(BankOffice office, Status status) {
         office.setStatus(status);
     }
 
@@ -57,9 +58,4 @@ public class BankOfficeImpl implements BankOfficeService {
         office.setCanSetATM(canSetATM);
     }
 
-    @Override
-    public void deleteOffice(BankOffice office, Bank bank) {
-        bank.setCountATM(bank.getCountATM() - 1);
-        office = null;
-    }
 }

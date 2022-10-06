@@ -108,4 +108,18 @@ public class Bank {
     public void setInterestRate(Double interestRate) {
         this.interestRate = interestRate;
     }
+
+    public String toString(){
+        return (
+                    "id: " + getId() + "\n" +
+                    "name: " + getName() + "\n" +
+                    "countOffice: " + getCountOffice() + "\n" +
+                    "countATM: " + getCountATM() + "\n" +
+                    "countEmployees: " + getCountEmployees() + "\n" +
+                    "countClients: " + getCountClients() + "\n" +
+                    "rating: " + getRating() + "\n" +
+                    "money: " + getMoney() + "\n" +
+                    "interestRate: " + getInterestRate()
+                );
+    }
 }

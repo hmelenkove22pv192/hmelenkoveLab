@@ -14,20 +14,11 @@ public class PaymentAccountImpl implements PaymentAccountService {
 
     @Override
     public void readPayAcc(PaymentAccount payAcc) {
-        System.out.println("id: " + payAcc.getIdPayAcc());
-        System.out.println("money: " + payAcc.getMoney());
-        System.out.println("user: " + payAcc.getUserName());
-        System.out.println("bankName: " + payAcc.getBankName());
+        System.out.println(payAcc.toString());
     }
 
     @Override
     public void updateMoney(PaymentAccount payAcc, Double money) {
         payAcc.setMoney(money);
-    }
-
-    @Override
-    public void deletePayAcc(PaymentAccount payAcc, Bank bank) {
-        bank.setCountATM(bank.getCountATM() - 1);
-        payAcc = null;
     }
 }
