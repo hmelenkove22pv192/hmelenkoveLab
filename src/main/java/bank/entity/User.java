@@ -2,17 +2,16 @@ package bank.entity;
 
 import java.util.Date;
 import java.util.Random;
-import bank.utils.FullName;
 
 public class User{
     private Integer id;
-    private FullName fullName;
+    private String fullName;
     private Date birthDay;
     private String workPlace;
     private Double monthSalary;
     private Integer creditRating;
 
-    public User(Integer id, FullName fullName, Date birthDay, String workPlace) {
+    public User(Integer id, String fullName, Date birthDay, String workPlace) {
         this.setIdUser(id);
         this.setFullName(fullName);
         this.setBirthDay(birthDay);
@@ -41,11 +40,11 @@ public class User{
         this.id = id;
     }
 
-    public FullName getFullName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(FullName fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
@@ -79,5 +78,16 @@ public class User{
 
     public void setCreditRating(Integer creditRating) {
         this.creditRating = creditRating;
+    }
+
+    public String toString(){
+        return (
+            "id: " + getIdUser() + "\n" +
+            "fullName: " + getFullName() + "\n" +
+            "birthDay: " + getBirthDay() + "\n" +
+            "workPlace: " + getWorkPlace() + "\n" +
+            "monthSalary: " + getMonthSalary() + "\n" +
+            "creditRating: " + getCreditRating()
+        );
     }
 }

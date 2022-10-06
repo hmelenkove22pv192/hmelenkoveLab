@@ -1,10 +1,12 @@
 package bank.entity;
 
+import bank.utils.Status;
+
 public class BankATM {
     private BankOffice office;
     private Integer id;
     private String name;
-    private Integer status;
+    private Status status;
     private String address;
     private Integer employeeId;
     private Boolean canGiveMoney;
@@ -12,7 +14,7 @@ public class BankATM {
     private Double money;
     private Double cost;
 
-    public BankATM(BankOffice office, Integer id, String name, Integer status, Integer employeeId,
+    public BankATM(BankOffice office, Integer id, String name, Status status, Integer employeeId,
                    Boolean canGiveMoney, Boolean canDepositMoney, Double money, Double cost) {
         setOffice(office);
         setId(id);
@@ -46,11 +48,11 @@ public class BankATM {
         this.name = name;
     }
 
-    public Integer getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Integer statusATM) {
+    public void setStatus(Status statusATM) {
         this.status = statusATM;
     }
 
@@ -98,5 +100,19 @@ public class BankATM {
 
     public void setCost(Double cost) {
         this.cost = cost;
+    }
+
+    public String toString(){
+       return (
+                   "id: " + getId() + "\n" +
+                   "name: " + getName() + "\n" +
+                   "address: " + getAddress() + "\n" +
+                   "status: " + getStatus() + "\n" +
+                   "employeeId: " + getEmployeeId() + "\n" +
+                   "canGiveMoney: " + getCanGiveMoney() + "\n" +
+                   "canDepositMoney: " + getCanDepositMoney() + "\n" +
+                   "money: " + getMoney() + "\n" +
+                   "cost: " + getCost()
+               );
     }
 }

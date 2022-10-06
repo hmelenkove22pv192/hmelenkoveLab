@@ -1,13 +1,12 @@
 package bank.entity;
 
 import java.util.Date;
-import bank.utils.FullName;
 
 public class Employee{
     private Bank bank;
     private BankOffice office;
     private Integer id;
-    private FullName fullName;
+    private String fullName;
     private Date birthDay;
     private String jobTitle;
     private String bankName;
@@ -16,7 +15,7 @@ public class Employee{
     private Boolean canGiveCredit;
     private Double salary;
 
-    public Employee(Bank bank, BankOffice office,Integer id, FullName fullName, Date birthDay, String jobTitle,
+    public Employee(Bank bank, BankOffice office,Integer id, String fullName, Date birthDay, String jobTitle,
                     Boolean isDistantWorker, Boolean canGiveCredit, Double salary) {
         this.setBank(bank);
         this.setOffice(office);
@@ -47,11 +46,11 @@ public class Employee{
         this.id = id;
     }
 
-    public FullName getFullName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(FullName fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
@@ -109,5 +108,19 @@ public class Employee{
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public String toString(){
+        return (
+                    "id: " + getIdEmployee() + "\n" +
+                    "fullName: " + getFullName() + "\n" +
+                    "birthDay: " + getBirthDay() + "\n" +
+                    "bankName: " + getBankName() + "\n" +
+                    "jobTitle: " + getJobTitle() + "\n" +
+                    "isDistantWorker: " + getIsDistantWorker() + "\n" +
+                    "Office: " + getOfficeId() + "\n" +
+                    "canGiveCredit: " + getCanGiveCredit() + "\n" +
+                    "salary: " + getSalary()
+                );
     }
 }

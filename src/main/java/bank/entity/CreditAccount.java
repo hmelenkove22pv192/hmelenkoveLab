@@ -1,7 +1,5 @@
 package bank.entity;
 
-import bank.utils.FullName;
-
 import java.util.Date;
 
 public class CreditAccount {
@@ -10,7 +8,7 @@ public class CreditAccount {
     private Employee employee;
     private PaymentAccount paymentAccount;
     private Integer id;
-    private FullName userName;
+    private String userName;
     private String bankName;
     private Date startDate;
     private Date endDate;
@@ -18,7 +16,7 @@ public class CreditAccount {
     private Double creditSum;
     private Double interestRate;
     private Double monthPay;
-    private FullName employeeName;
+    private String employeeName;
     private Integer paymentAccountId;
 
     public CreditAccount(Bank bank, User user, Employee employee, PaymentAccount paymentAccount,
@@ -65,7 +63,7 @@ public class CreditAccount {
         this.id = id;
     }
 
-    public FullName getUserName() {
+    public String getUserName() {
         return userName;
     }
 
@@ -129,7 +127,7 @@ public class CreditAccount {
         this.monthPay = monthPay;
     }
 
-    public FullName getEmployeeName() {
+    public String getEmployeeName() {
         return employeeName;
     }
 
@@ -143,5 +141,22 @@ public class CreditAccount {
 
     public void setPaymentAccountId() {
         this.paymentAccountId = paymentAccount.getIdPayAcc();
+    }
+
+    public String toString(){
+        return (
+                    "id: " + getId() + "\n" +
+                    "userName: " + getUserName() + "\n" +
+                    "bankName: " + getBankName() + "\n" +
+                    "startDate: " + getStartDate() + "\n" +
+                    "endDate: " + getEndDate() + "\n" +
+                    "countMonth: " + getCountMonth() + "\n" +
+                    "creditSum: " + getCreditSum() + "\n" +
+                    "interestRate: " + getInterestRate() + "\n" +
+                    "employee: " + getEmployeeName() + "\n" +
+                    "interestRate: " + getInterestRate() + "\n" +
+                    "monthPay: " + getMonthPay() + "\n" +
+                    "paymentAccountId: " + getPaymentAccountId()
+                );
     }
 }
