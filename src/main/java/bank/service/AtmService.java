@@ -22,10 +22,10 @@ public interface AtmService {
     BankATM createATM(Bank bank, BankOffice office, Integer id, String name, Status status, Integer employeeId,
                       Boolean canGiveMoney, Boolean canDepositMoney, Double money, Double cost);
     /**
-     * вывод в консоль экземпляра класса BankATM
-     * @param atm экземпляр класса BankATM
+     * возвращает экземпляр класса BankATM
+     * @param id экземпляра класса BankATM
      * */
-    void readATM(BankATM atm);
+    BankATM readATM(Integer id);
     /**
      * обновление статуса работы BankATM
      * @param atm экземпляр класса BankATM

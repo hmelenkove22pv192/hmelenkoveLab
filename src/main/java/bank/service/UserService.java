@@ -14,10 +14,10 @@ public interface UserService {
      * */
     User createUser(Integer id, String fullName, Date birthDay, String workPlace);
     /**
-     * вывод в консоль экземпляра класса User
-     * @param user экземпляр класса User
+     * возвращает экземпляр класса User
+     * @param id экземпляра класса User
      * */
-    void readUser(User user);
+    User readUser(Integer id) ;
     /**
      * обновление места работы клиент
      * @param user экземпляр класса User

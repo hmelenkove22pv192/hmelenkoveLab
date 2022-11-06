@@ -1,34 +1,30 @@
 package bank.service.impl;
 
 import bank.entity.Bank;
+import bank.service.BankOfficeService;
 import bank.service.BankService;
 
+import java.util.Map;
+
 public class BankImpl implements BankService {
-    public BankImpl(){}
-    /**
-     * создание экземпляра класса Bank
-     * @param id идентификатор банка
-     * @param name название банка
-     * */
+//    private BankOfficeService officeService;
+    private Map<Integer, Bank>  banks;
+
     @Override
     public Bank createBank(Integer id, String name) {
-        return new Bank(id, name);
+        return banks.put(id, new Bank(id, name));
     }
 
-    /**
-     * вывод в консоль экземпляра класса Bank
-     * @param bank экземпляр класса Bank
-     * */
     @Override
-    public void readBank(Bank bank) {
-        System.out.println(bank);
+    public Bank readBank(Integer id) {
+       return banks.get(id);
     }
 
-    /**
-     * обновление названия банка
-     * @param bank экземпляр класса Bank
-     * @param name новое название банка
-     * */
+    @Override
+    public Map<Integer, Bank> getAllBanks() {
+        return banks;
+    }
+
     @Override
     public void updateBankName(Bank bank, String name) {
         bank.setName(name);

@@ -22,10 +22,10 @@ public interface EmployeeService {
     Employee createEmployee(Bank bank, BankOffice office, Integer id, String fullName, Date birthDay, String jobTitle,
                                    Boolean isDistantWorker, Boolean canGiveCredit, Double salary);
     /**
-     * вывод в консоль экземпляра класса Employee
-     * @param employee экземпляр класса Employee
+     * возвращает экземпляр класса Employee
+     * @param id экземпляра класса Employee
      * */
-    void readEmployee(Employee employee);
+    Employee readEmployee(Integer id) ;
     /**
      * обновление статуса дистанционной работы сотрудника
      * @param employee экземпляр класса Employee

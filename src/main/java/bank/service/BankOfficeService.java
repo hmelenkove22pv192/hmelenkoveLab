@@ -23,10 +23,10 @@ public interface BankOfficeService {
                                    Boolean canSetATM, Boolean canTakeCredit, Boolean canGiveMoney,
                                    Boolean canDepositMoney, Double money, Double cost);
     /**
-     * вывод в консоль экземпляра класса BankOffice
-     * @param office экземпляр класса BankOffice
+     * возвращает экземпляр класса BankOffice
+     * @param id экземпляра класса BankOffice
      * */
-    void readOffice(BankOffice office);
+    BankOffice readOffice(Integer id);
     /**
      * обновление статуса работы BankOffice
      * @param office экземпляр класса BankOffice

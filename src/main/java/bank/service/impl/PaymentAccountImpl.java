@@ -1,37 +1,29 @@
 package bank.service.impl;
 
 import bank.entity.Bank;
+import bank.entity.Employee;
 import bank.entity.PaymentAccount;
 import bank.entity.User;
 import bank.service.PaymentAccountService;
 
+import java.util.Map;
+
 public class PaymentAccountImpl implements PaymentAccountService {
-    /**
-     * создание экземпляра класса PaymentAccount
-     * @param bank экземпляр класса Bank
-     * @param user экземпляр класса User
-     * @param id идентификатор платежного счета
-     * */
+    private Map<Integer, PaymentAccount> pays;
+
+    public PaymentAccountImpl(){}
+
     @Override
     public PaymentAccount createPayAcc(Bank bank, User user, Integer id) {
         bank.setCountClients(bank.getCountOffice() + 1);
-        return new PaymentAccount(bank, user, id);
+        return pays.put(id, new PaymentAccount(bank, user, id));
     }
 
-    /**
-     * вывод в консоль экземпляра класса PaymentAccount
-     * @param payAcc экземпляр класса PaymentAccount
-     * */
     @Override
-    public void readPayAcc(PaymentAccount payAcc) {
-        System.out.println(payAcc);
+    public PaymentAccount readPayAcc(Integer id) {
+        return pays.get(id);
     }
 
-    /**
-     * обновление суммы денег на счету
-     * @param payAcc экземпляр класса PaymentAccount
-     * @param money новая сумма
-     * */
     @Override
     public void updateMoney(PaymentAccount payAcc, Double money) {
         payAcc.setMoney(money);

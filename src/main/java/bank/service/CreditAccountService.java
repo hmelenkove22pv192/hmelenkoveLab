@@ -21,10 +21,10 @@ public interface CreditAccountService {
                                          Integer id, Date startDate, Date endDate, Integer countMonth,
                                          Double creditSum, Double monthPay);
     /**
-     * вывод в консоль экземпляра класса CreditAccount
-     * @param creditAcc экземпляр класса CreditAccount
+     * возвращает экземпляр класса CreditAccount
+     * @param id экземпляра класса CreditAccount
      * */
-    void readCreditAcc(CreditAccount creditAcc);
+    CreditAccount readCreditAcc(Integer id);
     /**
      * обновление платежного счета
      * @param creditAcc экземпляр класса CreditAccount

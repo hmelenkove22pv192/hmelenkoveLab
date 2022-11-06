@@ -13,10 +13,10 @@ public interface PaymentAccountService {
      * */
     PaymentAccount createPayAcc(Bank bank, User user, Integer id);
     /**
-     * вывод в консоль экземпляра класса PaymentAccount
-     * @param payAcc экземпляр класса PaymentAccount
+     * возвращает экземпляр класса PaymentAccount
+     * @param id экземпляра класса PaymentAccount
      * */
-    void readPayAcc(PaymentAccount payAcc);
+    PaymentAccount readPayAcc(Integer id);
     /**
      * обновление суммы денег на счету
      * @param payAcc экземпляр класса PaymentAccount

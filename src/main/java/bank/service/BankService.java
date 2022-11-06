@@ -2,6 +2,8 @@ package bank.service;
 
 import bank.entity.Bank;
 
+import java.util.Map;
+
 public interface BankService {
     /**
      * создание экземпляра класса Bank
@@ -10,10 +12,14 @@ public interface BankService {
      * */
     Bank createBank(Integer id, String name);
     /**
-     * вывод в консоль экземпляра класса Bank
-     * @param bank экземпляр класса Bank
+     * возвращает экземпляра класса Bank
+     * @param id экземпляра класса Bank
      * */
-    void readBank(Bank bank);
+    Bank readBank(Integer id);
+    /**
+     * возвращает все экземпляры класса Bank
+     * */
+    Map<Integer, Bank> getAllBanks();
     /**
      * обновление названия банка
      * @param bank экземпляр класса Bank
