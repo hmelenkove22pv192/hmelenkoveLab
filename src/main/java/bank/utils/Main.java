@@ -1,7 +1,5 @@
 package bank.utils;
 
-import bank.entity.CreditAccount;
-import bank.entity.PaymentAccount;
 import bank.service.*;
 import bank.service.impl.*;
 
