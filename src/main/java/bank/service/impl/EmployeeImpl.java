@@ -1,16 +1,14 @@
 package bank.service.impl;
 
-import bank.entity.Bank;
-import bank.entity.BankOffice;
-import bank.entity.CreditAccount;
-import bank.entity.Employee;
+import bank.entity.*;
 import bank.service.EmployeeService;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class EmployeeImpl implements EmployeeService {
-    private Map<Integer, Employee> employees;
+    private Map<Integer, Employee> employees = new HashMap<Integer, Employee>();
     public EmployeeImpl(){}
 
     @Override

@@ -21,6 +21,8 @@ public class PaymentAccount{
         this.user = user;
     }
 
+    public Integer getUserId() { return user.getIdUser();}
+
     public Bank getBank() { return bank;}
 
     public void setBank(Bank bank) {

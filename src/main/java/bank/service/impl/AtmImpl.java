@@ -6,10 +6,11 @@ import bank.entity.BankOffice;
 import bank.service.AtmService;
 import bank.utils.Status;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class AtmImpl implements AtmService {
-    private Map<Integer, BankATM> atms;
+    private Map<Integer, BankATM> atms = new HashMap<Integer, BankATM>();
     public AtmImpl(){}
 
     @Override

@@ -5,10 +5,11 @@ import bank.entity.BankOffice;
 import bank.service.BankOfficeService;
 import bank.utils.Status;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class BankOfficeImpl implements BankOfficeService {
-    private Map<Integer, BankOffice> offices;
+    private Map<Integer, BankOffice> offices = new HashMap<Integer, BankOffice>();
 
     public BankOfficeImpl(){}
 
@@ -17,8 +18,8 @@ public class BankOfficeImpl implements BankOfficeService {
                                    Boolean canSetATM, Boolean canTakeCredit, Boolean canGiveMoney,
                                    Boolean canDepositMoney, Double money, Double cost) {
         bank.setCountOffice(bank.getCountOffice() + 1);
-        return offices.put(id, new BankOffice(id, name, address, status, canSetATM, canTakeCredit, canGiveMoney,
-                canDepositMoney, money, cost)) ;
+        return offices.put(id, new BankOffice(id, bank.getId(), name, address, status, canSetATM, canTakeCredit,
+                canGiveMoney, canDepositMoney, money, cost)) ;
     }
 
     @Override

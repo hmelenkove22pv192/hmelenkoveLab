@@ -47,6 +47,8 @@ public class CreditAccount {
         this.user = user;
     }
 
+    public Integer getUserId() { return user.getIdUser();}
+
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }

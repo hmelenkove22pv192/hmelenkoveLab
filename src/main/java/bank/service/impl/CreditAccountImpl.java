@@ -4,10 +4,11 @@ import bank.entity.*;
 import bank.service.CreditAccountService;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CreditAccountImpl implements CreditAccountService {
-    private Map<Integer, CreditAccount> credits;
+    private Map<Integer, CreditAccount> credits = new HashMap<Integer, CreditAccount>();
     public CreditAccountImpl(){}
 
     @Override

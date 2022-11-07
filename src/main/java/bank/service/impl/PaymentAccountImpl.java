@@ -1,15 +1,13 @@
 package bank.service.impl;
 
-import bank.entity.Bank;
-import bank.entity.Employee;
-import bank.entity.PaymentAccount;
-import bank.entity.User;
+import bank.entity.*;
 import bank.service.PaymentAccountService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class PaymentAccountImpl implements PaymentAccountService {
-    private Map<Integer, PaymentAccount> pays;
+    private Map<Integer, PaymentAccount> pays = new HashMap<Integer, PaymentAccount>();
 
     public PaymentAccountImpl(){}
 

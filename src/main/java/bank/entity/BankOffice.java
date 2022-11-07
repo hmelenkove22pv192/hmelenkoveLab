@@ -4,6 +4,7 @@ import bank.utils.*;
 
 public class BankOffice {
     private Integer id;
+    private Integer bankId;
     private String name;
     private String address;
     private Status status;
@@ -15,10 +16,11 @@ public class BankOffice {
     private Double money;
     private Double cost;
 
-    public BankOffice(Integer id, String name, String address, Status status,
+    public BankOffice(Integer id, Integer bankId, String name, String address, Status status,
                       Boolean canSetATM, Boolean canTakeCredit, Boolean canGiveMoney,
                       Boolean canDepositMoney, Double money, Double cost) {
         this.setId(id);
+        this.setBankId(bankId);
         this.setName(name);
         this.setAddress(address);
         this.setStatus(status);
@@ -117,6 +119,11 @@ public class BankOffice {
 
     public void setCost(Double cost) {
         this.cost = cost;
+    }
+
+    public void setBankId(Integer bankId) { this.bankId = bankId; }
+    public Integer getBankId() {
+        return bankId;
     }
 
     public String toString(){

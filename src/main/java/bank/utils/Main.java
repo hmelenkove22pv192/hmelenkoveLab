@@ -1,12 +1,11 @@
 package bank.utils;
 
-import bank.entity.*;
+import bank.entity.CreditAccount;
+import bank.entity.PaymentAccount;
 import bank.service.*;
 import bank.service.impl.*;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,13 +17,15 @@ public class Main {
 
         //BankOffice
         BankOfficeService bankOfficeImpl = new BankOfficeImpl();
+        Integer counter = 0;
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 3; j++) {
+                counter++;
                 bankOfficeImpl.createOffice(
                         bankImpl.readBank(i),
-                        i-1+j,
-                        "office_name" + i + j,
-                        "address" + i + j,
+                        counter,
+                        "office_name" + counter,
+                        "address" + counter,
                         Status.WORK,
                         Boolean.TRUE,
                         Boolean.TRUE,
@@ -34,84 +35,125 @@ public class Main {
                         5.0);
             }
         }
+        bankImpl.setOfficeService(bankOfficeImpl);
 
         //BankAtm
         AtmService atmImpl = new AtmImpl();
+        counter = 0;
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 3; j++) {
+                counter++;
                 atmImpl.createATM(
                         bankImpl.readBank(i),
                         bankOfficeImpl.readOffice(j),
-                        i-1+j,
-                        "ATM" + i + j,
+                        counter,
+                        "ATM" + counter,
                         Status.WORK,
-                        i-1+j,
+                        counter,
                         Boolean.TRUE,
                         Boolean.TRUE,
                         500.0,
                         50.0);
             }
         }
+        bankImpl.setAtmService(atmImpl);
 
         //Employee
         EmployeeService employeeImpl = new EmployeeImpl();
+        counter = 0;
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 3; j++) {
                 for (int a = 1; a <= 5; a++){
+                    counter++;
                     employeeImpl.createEmployee(
                             bankImpl.readBank(i),
                             bankOfficeImpl.readOffice(j),
-                            i-1+j-1+a,
-                            "Employee" + i + j + a,
+                            counter,
+                            "Employee" + counter,
                             new Date(),
-                            "job" + i + j + a,
+                            "job" + counter,
                             Boolean.TRUE,
                             Boolean.TRUE,
                             100.000);
                 }
             }
         }
+        bankImpl.setEmployeeService(employeeImpl);
 
         //User
         UserService userImpl = new UserImpl();
+        counter = 0;
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 5; j++) {
+                counter++;
                 userImpl.createUser(
-                        i-1+j,
-                        "User" + i + j,
+                        counter,
+                        "User" + counter,
                         new Date(),
-                        "work" + i + j);
+                        "work" + counter);
             }
         }
 
         //PaymentAccount
         PaymentAccountService payAccImpl = new PaymentAccountImpl();
+        counter = 0;
+        Integer userCounter = 0;
         for (int i = 1; i <= 5; i++) {
-            for (int j = 1; j <= 2; j++) {
-                PaymentAccount payAcc = payAccImpl.createPayAcc(
-                        bankImpl.readBank(rnd(1,5)),
-                        userImpl.readUser(i),
-                        i-1+j);
+            for (int j = 1; j <= 5; j++) {
+                userCounter++;
+                for (int a = 1; a <= 2; a++) {
+                    counter++;
+                    payAccImpl.createPayAcc(
+                            bankImpl.readBank(i),
+                            userImpl.readUser(userCounter),
+                            counter);
+                }
             }
         }
+        userImpl.setPayService(payAccImpl);
 
         //CreditAccount
         CreditAccountService creditAccImpl = new CreditAccountImpl();
+        counter = 0;
+        userCounter = 0;
         for (int i = 1; i <= 5; i++) {
-            for (int j = 1; j <= 2; j++) {
-                Integer randomIndex = rnd(1,5);
-                CreditAccount creditAcc = creditAccImpl.createCreditAcc(
-                        bankImpl.readBank(randomIndex),
-                        userImpl.readUser(i),
-                        employeeImpl.readEmployee(randomIndex * 15 - rnd(0, 14)),
-                        payAccImpl.readPayAcc(j),
-                        i-1+j,
-                        new Date(),
-                        new Date(),
-                        82,
-                        200.000,
-                        30.000);
+            for (int j = 1; j <= 5; j++) {
+                userCounter++;
+                for (int a = 1; a <= 2; a++) {
+                    counter++;
+                    creditAccImpl.createCreditAcc(
+                            bankImpl.readBank(i),
+                            userImpl.readUser(userCounter),
+                            employeeImpl.readEmployee(i * 15 - rnd(0, 14)),
+                            payAccImpl.readPayAcc(a),
+                            counter,
+                            new Date(),
+                            new Date(),
+                            82,
+                            200.000,
+                            30.000);
+                }
             }
+        }
+        userImpl.setCreditService(creditAccImpl);
+
+        // вывод информации о банке
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("----------------------");
+            System.out.println("Bank" + i + "\n");
+            System.out.println(bankImpl.readBank(i));
+            bankImpl.getBankInfo(i);
+            System.out.println("\n");
+            System.out.println("----------------------");
+        }
+        // вывод информации о клиенте
+        for (int i = 1; i <= 25; i++) {
+            System.out.println("----------------------");
+            System.out.println("User" + i + "\n");
+            System.out.println(userImpl.readUser(i));
+            userImpl.getUserInfo(i);
+            System.out.println("\n");
+            System.out.println("----------------------");
         }
     }
 

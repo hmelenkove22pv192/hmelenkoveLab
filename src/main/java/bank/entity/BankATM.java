@@ -32,6 +32,10 @@ public class BankATM {
         this.office = office;
     }
 
+    public Integer getOfficeId() {
+        return office.getId();
+    }
+
     public Integer getId() {
         return id;
     }

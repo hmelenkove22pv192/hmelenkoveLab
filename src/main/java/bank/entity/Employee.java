@@ -38,6 +38,10 @@ public class Employee{
         this.bank = bank;
     }
 
+    public Integer getBankId() {
+        return bank.getId();
+    }
+
     public Integer getIdEmployee() {
         return id;
     }
