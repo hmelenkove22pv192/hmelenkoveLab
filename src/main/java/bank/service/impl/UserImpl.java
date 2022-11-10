@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import static bank.utils.Constants.paysAndCreditsCount;
+import static bank.utils.Constants.PAYS_AND_CREDITS_COUNT;
 
 public class UserImpl implements UserService {
     private PaymentAccountService payService = PaymentAccountImpl.getInstance();
@@ -53,7 +53,7 @@ public class UserImpl implements UserService {
     public void getUserInfo(Integer id) {
         System.out.println("\n");
         System.out.println("Payment accounts");
-        for (int i = 1; i <= paysAndCreditsCount; i++){
+        for (int i = 1; i <= PAYS_AND_CREDITS_COUNT; i++){
             PaymentAccount pay = payService.readPayAcc(i);
             if (Objects.equals(pay.getUserId(), id)){
                 System.out.println("*************");
@@ -62,7 +62,7 @@ public class UserImpl implements UserService {
         }
         System.out.println("\n");
         System.out.println("Credit accounts");
-        for (int j = 1; j <= paysAndCreditsCount; j++){
+        for (int j = 1; j <= PAYS_AND_CREDITS_COUNT; j++){
             CreditAccount credit = creditService.readCreditAcc(j);
             if (Objects.equals(credit.getUserId(), id)){
                 System.out.println("*************");

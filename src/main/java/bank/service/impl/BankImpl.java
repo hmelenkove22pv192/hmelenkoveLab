@@ -60,7 +60,7 @@ public class BankImpl implements BankService {
     public void getBankInfo(Integer id) {
         System.out.println("\n");
         System.out.println("Offices info");
-        for (int i = 1; i <= officesCount; i++){
+        for (int i = 1; i <= OFFICES_COUNT; i++){
             BankOffice office = officeService.readOffice(i);
             if (Objects.equals(office.getBankId(), id)){
                 System.out.println("*************");
@@ -68,7 +68,7 @@ public class BankImpl implements BankService {
             }
             System.out.println("\n");
             System.out.println("ATMs info:");
-            for (int j = 1; j <= atmsCount; j++){
+            for (int j = 1; j <= ATMS_COUNT; j++){
                 BankATM atm = atmService.readATM(j);
                 if (Objects.equals(atm.getOfficeId(), office.getId())){
                     System.out.println("*************");
@@ -77,7 +77,7 @@ public class BankImpl implements BankService {
             }
             System.out.println("\n");
             System.out.println("Employees info:");
-            for (int a = 1; a <= employeesCount; a++){
+            for (int a = 1; a <= EMPLOYEES_COUNT; a++){
                 Employee employee = employeeService.readEmployee(a);
                 if (Objects.equals(employee.getBankId(), id)){
                     System.out.println("*************");
