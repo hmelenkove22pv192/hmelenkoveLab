@@ -10,8 +10,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AtmImpl implements AtmService {
-    private Map<Integer, BankATM> atms = new HashMap<Integer, BankATM>();
-    public AtmImpl(){}
+    private final Map<Integer, BankATM> atms = new HashMap<>();
+    // реализация Singleton
+    private static AtmImpl instance; // приватное статическое поле, содержащее одиночный объект
+    private AtmImpl(){} // приватный конструктор класса
+    public static AtmImpl getInstance(){ // статический создающий метод, который будет использоваться для получения одиночки
+        if(instance == null){
+            instance = new AtmImpl();
+        }
+        return instance;
+    }
 
     @Override
     public BankATM createATM(Bank bank, BankOffice office, Integer id, String name, Status status, Integer employeeId,

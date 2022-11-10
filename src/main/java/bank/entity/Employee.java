@@ -10,13 +10,13 @@ public class Employee{
     private Date birthDay;
     private String jobTitle;
     private String bankName;
-    private Boolean isDistantWorker;
+    private boolean isDistantWorker;
     private Integer officeId;
-    private Boolean canGiveCredit;
+    private boolean canGiveCredit;
     private Double salary;
 
     public Employee(Bank bank, BankOffice office,Integer id, String fullName, Date birthDay, String jobTitle,
-                    Boolean isDistantWorker, Boolean canGiveCredit, Double salary) {
+                    boolean isDistantWorker, boolean canGiveCredit, Double salary) {
         this.setBank(bank);
         this.setOffice(office);
         this.setIdEmployee(id);
@@ -82,11 +82,11 @@ public class Employee{
         this.bankName = bank.getName();
     }
 
-    public Boolean getIsDistantWorker() {
+    public boolean getIsDistantWorker() {
         return isDistantWorker;
     }
 
-    public void setIsDistantWorker(Boolean isDistantWorker) {
+    public void setIsDistantWorker(boolean isDistantWorker) {
         this.isDistantWorker = isDistantWorker;
     }
 
@@ -98,11 +98,11 @@ public class Employee{
         this.officeId = office.getId();
     }
 
-    public Boolean getCanGiveCredit() {
+    public boolean getCanGiveCredit() {
         return canGiveCredit;
     }
 
-    public void setCanGiveCredit(Boolean canGiveCredit) {
+    public void setCanGiveCredit(boolean canGiveCredit) {
         this.canGiveCredit = canGiveCredit;
     }
 

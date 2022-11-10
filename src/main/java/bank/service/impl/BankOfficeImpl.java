@@ -9,9 +9,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BankOfficeImpl implements BankOfficeService {
-    private Map<Integer, BankOffice> offices = new HashMap<Integer, BankOffice>();
+    private final Map<Integer, BankOffice> offices = new HashMap<>();
 
-    public BankOfficeImpl(){}
+    // реализация Singleton
+    private static BankOfficeImpl instance; // приватное статическое поле, содержащее одиночный объект
+    private BankOfficeImpl(){} // приватный конструктор класса
+    public static BankOfficeImpl getInstance(){ // статический создающий метод, который будет использоваться для получения одиночки
+        if(instance == null){
+            instance = new BankOfficeImpl();
+        }
+        return instance;
+    }
 
     @Override
     public BankOffice createOffice(Bank bank, Integer id, String name, String address, Status status,

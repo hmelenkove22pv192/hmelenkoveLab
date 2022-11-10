@@ -8,8 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreditAccountImpl implements CreditAccountService {
-    private Map<Integer, CreditAccount> credits = new HashMap<Integer, CreditAccount>();
-    public CreditAccountImpl(){}
+    private final Map<Integer, CreditAccount> credits = new HashMap<>();
+    // реализация Singleton
+    private static CreditAccountImpl instance; // приватное статическое поле, содержащее одиночный объект
+    private CreditAccountImpl(){} // приватный конструктор класса
+    public static CreditAccountImpl getInstance(){ // статический создающий метод, который будет использоваться для получения одиночки
+        if(instance == null){
+            instance = new CreditAccountImpl();
+        }
+        return instance;
+    }
 
     @Override
     public CreditAccount createCreditAcc(Bank bank, User user, Employee employee,

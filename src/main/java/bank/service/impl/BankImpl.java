@@ -8,12 +8,25 @@ import bank.service.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+
+import static bank.utils.Constants.*;
 
 public class BankImpl implements BankService {
-    private AtmService atmService = new AtmImpl();
-    private BankOfficeService officeService = new BankOfficeImpl();
-    private EmployeeService employeeService = new EmployeeImpl();
-    private Map<Integer, Bank>  banks = new HashMap<Integer, Bank>();
+    private AtmService atmService = AtmImpl.getInstance();
+    private BankOfficeService officeService = BankOfficeImpl.getInstance();
+    private EmployeeService employeeService = EmployeeImpl.getInstance();
+    private final Map<Integer, Bank>  banks = new HashMap<>();
+
+    // реализация Singleton
+    private static BankImpl instance; // приватное статическое поле, содержащее одиночный объект
+    private BankImpl(){} // приватный конструктор класса
+    public static BankImpl getInstance(){ // статический создающий метод, который будет использоваться для получения одиночки
+        if(instance == null){
+            instance = new BankImpl();
+        }
+        return instance;
+    }
 
     @Override
     public void setAtmService(AtmService atmService) {
@@ -47,26 +60,26 @@ public class BankImpl implements BankService {
     public void getBankInfo(Integer id) {
         System.out.println("\n");
         System.out.println("Offices info");
-        for (int i = 1; i <= 15; i++){
+        for (int i = 1; i <= officesCount; i++){
             BankOffice office = officeService.readOffice(i);
-            if (office.getBankId() == id ){
+            if (Objects.equals(office.getBankId(), id)){
                 System.out.println("*************");
                 System.out.println(office);
             }
             System.out.println("\n");
             System.out.println("ATMs info:");
-            for (int j = 1; j <= 15; j++){
+            for (int j = 1; j <= atmsCount; j++){
                 BankATM atm = atmService.readATM(j);
-                if (atm.getOfficeId() == office.getId() ){
+                if (Objects.equals(atm.getOfficeId(), office.getId())){
                     System.out.println("*************");
                     System.out.println(atm);
                 }
             }
             System.out.println("\n");
             System.out.println("Employees info:");
-            for (int a = 1; a <= 75; a++){
+            for (int a = 1; a <= employeesCount; a++){
                 Employee employee = employeeService.readEmployee(a);
-                if (employee.getBankId() == id ){
+                if (Objects.equals(employee.getBankId(), id)){
                     System.out.println("*************");
                     System.out.println(employee);
                 }

@@ -7,9 +7,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PaymentAccountImpl implements PaymentAccountService {
-    private Map<Integer, PaymentAccount> pays = new HashMap<Integer, PaymentAccount>();
+    private final Map<Integer, PaymentAccount> pays = new HashMap<>();
 
-    public PaymentAccountImpl(){}
+    // реализация Singleton
+    private static PaymentAccountImpl instance; // приватное статическое поле, содержащее одиночный объект
+    private PaymentAccountImpl(){} // приватный конструктор класса
+    public static PaymentAccountImpl getInstance(){ // статический создающий метод, который будет использоваться для получения одиночки
+        if(instance == null){
+            instance = new PaymentAccountImpl();
+        }
+        return instance;
+    }
 
     @Override
     public PaymentAccount createPayAcc(Bank bank, User user, Integer id) {

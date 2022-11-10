@@ -6,12 +6,24 @@ import bank.service.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+
+import static bank.utils.Constants.paysAndCreditsCount;
 
 public class UserImpl implements UserService {
-    private PaymentAccountService payService = new PaymentAccountImpl();
-    private CreditAccountService creditService = new CreditAccountImpl();
-    private Map<Integer, User> users = new HashMap<Integer, User>();
-    public UserImpl(){}
+    private PaymentAccountService payService = PaymentAccountImpl.getInstance();
+    private CreditAccountService creditService = CreditAccountImpl.getInstance();
+    private final Map<Integer, User> users = new HashMap<>();
+
+    // реализация Singleton
+    private static UserImpl instance; // приватное статическое поле, содержащее одиночный объект
+    private UserImpl(){} // приватный конструктор класса
+    public static UserImpl getInstance(){ // статический создающий метод, который будет использоваться для получения одиночки
+        if(instance == null){
+            instance = new UserImpl();
+        }
+        return instance;
+    }
     @Override
     public void setPayService(PaymentAccountService payService) {
         this.payService = payService;
@@ -41,18 +53,18 @@ public class UserImpl implements UserService {
     public void getUserInfo(Integer id) {
         System.out.println("\n");
         System.out.println("Payment accounts");
-        for (int i = 1; i <= 50; i++){
+        for (int i = 1; i <= paysAndCreditsCount; i++){
             PaymentAccount pay = payService.readPayAcc(i);
-            if (pay.getUserId() == id ){
+            if (Objects.equals(pay.getUserId(), id)){
                 System.out.println("*************");
                 System.out.println(pay);
             }
         }
         System.out.println("\n");
         System.out.println("Credit accounts");
-        for (int j = 1; j <= 50; j++){
+        for (int j = 1; j <= paysAndCreditsCount; j++){
             CreditAccount credit = creditService.readCreditAcc(j);
-            if (credit.getUserId() == id ){
+            if (Objects.equals(credit.getUserId(), id)){
                 System.out.println("*************");
                 System.out.println(credit);
             }

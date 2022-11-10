@@ -9,13 +9,13 @@ public class BankATM {
     private Status status;
     private String address;
     private Integer employeeId;
-    private Boolean canGiveMoney;
-    private Boolean canDepositMoney;
+    private boolean canGiveMoney;
+    private boolean canDepositMoney;
     private Double money;
     private Double cost;
 
     public BankATM(BankOffice office, Integer id, String name, Status status, Integer employeeId,
-                   Boolean canGiveMoney, Boolean canDepositMoney, Double money, Double cost) {
+                   boolean canGiveMoney, boolean canDepositMoney, Double money, Double cost) {
         setOffice(office);
         setId(id);
         setName(name);
@@ -74,19 +74,19 @@ public class BankATM {
         this.employeeId = employeeId;
     }
 
-    public Boolean getCanGiveMoney() {
+    public boolean getCanGiveMoney() {
         return canGiveMoney;
     }
 
-    public void setCanGiveMoney(Boolean canGiveMoney) {
+    public void setCanGiveMoney(boolean canGiveMoney) {
         this.canGiveMoney = canGiveMoney;
     }
 
-    public Boolean getCanDepositMoney() {
+    public boolean getCanDepositMoney() {
         return canDepositMoney;
     }
 
-    public void setCanDepositMoney(Boolean canDepositMoney) {
+    public void setCanDepositMoney(boolean canDepositMoney) {
         this.canDepositMoney = canDepositMoney;
     }
 

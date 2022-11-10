@@ -8,17 +8,17 @@ public class BankOffice {
     private String name;
     private String address;
     private Status status;
-    private Boolean canSetATM;
+    private boolean canSetATM;
     private Integer countATM;
-    private Boolean canTakeCredit;
-    private Boolean canGiveMoney;
-    private Boolean canDepositMoney;
+    private boolean canTakeCredit;
+    private boolean canGiveMoney;
+    private boolean canDepositMoney;
     private Double money;
     private Double cost;
 
     public BankOffice(Integer id, Integer bankId, String name, String address, Status status,
-                      Boolean canSetATM, Boolean canTakeCredit, Boolean canGiveMoney,
-                      Boolean canDepositMoney, Double money, Double cost) {
+                      boolean canSetATM, boolean canTakeCredit, boolean canGiveMoney,
+                      boolean canDepositMoney, Double money, Double cost) {
         this.setId(id);
         this.setBankId(bankId);
         this.setName(name);
@@ -65,11 +65,11 @@ public class BankOffice {
         this.status = status;
     }
 
-    public Boolean getCanSetATM() {
+    public boolean getCanSetATM() {
         return canSetATM;
     }
 
-    public void setCanSetATM(Boolean canSetATM) {
+    public void setCanSetATM(boolean canSetATM) {
         this.canSetATM = canSetATM;
     }
 
@@ -81,27 +81,27 @@ public class BankOffice {
         this.countATM = countATM;
     }
 
-    public Boolean getCanTakeCredit() {
+    public boolean getCanTakeCredit() {
         return canTakeCredit;
     }
 
-    public void setCanTakeCredit(Boolean canTakeCredit) {
+    public void setCanTakeCredit(boolean canTakeCredit) {
         this.canTakeCredit = canTakeCredit;
     }
 
-    public Boolean getCanGiveMoney() {
+    public boolean getCanGiveMoney() {
         return canGiveMoney;
     }
 
-    public void setCanGiveMoney(Boolean canGiveMoney) {
+    public void setCanGiveMoney(boolean canGiveMoney) {
         this.canGiveMoney = canGiveMoney;
     }
 
-    public Boolean getCanDepositMoney() {
+    public boolean getCanDepositMoney() {
         return canDepositMoney;
     }
 
-    public void setCanDepositMoney(Boolean canDepositMoney) {
+    public void setCanDepositMoney(boolean canDepositMoney) {
         this.canDepositMoney = canDepositMoney;
     }
 

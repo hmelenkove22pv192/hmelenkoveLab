@@ -8,8 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EmployeeImpl implements EmployeeService {
-    private Map<Integer, Employee> employees = new HashMap<Integer, Employee>();
-    public EmployeeImpl(){}
+    private final Map<Integer, Employee> employees = new HashMap<>();
+    // реализация Singleton
+    private static EmployeeImpl instance; // приватное статическое поле, содержащее одиночный объект
+    private EmployeeImpl(){} // приватный конструктор класса
+    public static EmployeeImpl getInstance(){ // статический создающий метод, который будет использоваться для получения одиночки
+        if(instance == null){
+            instance = new EmployeeImpl();
+        }
+        return instance;
+    }
 
     @Override
     public Employee createEmployee(Bank bank, BankOffice office, Integer id,
