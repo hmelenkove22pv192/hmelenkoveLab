@@ -41,22 +41,20 @@ public class Main {
         //BankAtm
         AtmService atmImpl = AtmImpl.getInstance();
         counter = 0;
-        for (int i = 1; i <= BANKS_COUNT; i++) {
-            for (int j = 1; j <= OFFICES_IN_ONE_BANK; j++) {
-                for (int a = 1; a <= ATMS_IN_ONE_BANK; a++){
-                    counter++;
-                    atmImpl.createATM(
-                            bankImpl.readBank(i),
-                            bankOfficeImpl.readOffice(j),
-                            counter,
-                            "ATM" + counter,
-                            Status.WORK,
-                            counter,
-                            true,
-                            true,
-                            500.0,
-                            50.0);
-                }
+        for (int j = 1; j <= OFFICES_COUNT; j++) {
+            for (int a = 1; a <= ATMS_IN_ONE_BANK; a++){
+                counter++;
+                atmImpl.createATM(
+                        bankImpl.readBank(bankOfficeImpl.readOffice(j).getBankId()),
+                        bankOfficeImpl.readOffice(j),
+                        counter,
+                        "ATM" + counter,
+                        Status.WORK,
+                        counter,
+                        true,
+                        true,
+                        500.0,
+                        50.0);
             }
         }
         bankImpl.setAtmService(atmImpl);
@@ -64,21 +62,19 @@ public class Main {
         //Employee
         EmployeeService employeeImpl = EmployeeImpl.getInstance();
         counter = 0;
-        for (int i = 1; i <= BANKS_COUNT; i++) {
-            for (int j = 1; j <= OFFICES_IN_ONE_BANK; j++) {
-                for (int a = 1; a <= EMPLOYEES_IN_ONE_BANK; a++){
-                    counter++;
-                    employeeImpl.createEmployee(
-                            bankImpl.readBank(i),
-                            bankOfficeImpl.readOffice(j),
-                            counter,
-                            "Employee" + counter,
-                            new Date(),
-                            "job" + counter,
-                            true,
-                            true,
-                            100.000);
-                }
+        for (int j = 1; j <= OFFICES_COUNT; j++) {
+            for (int a = 1; a <= EMPLOYEES_IN_ONE_BANK; a++){
+                counter++;
+                employeeImpl.createEmployee(
+                        bankImpl.readBank(bankOfficeImpl.readOffice(j).getBankId()),
+                        bankOfficeImpl.readOffice(j),
+                        counter,
+                        "Employee" + counter,
+                        new Date(),
+                        "job" + counter,
+                        true,
+                        true,
+                        100.000);
             }
         }
         bankImpl.setEmployeeService(employeeImpl);

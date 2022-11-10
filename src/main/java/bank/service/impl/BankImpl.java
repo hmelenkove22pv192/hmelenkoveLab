@@ -79,7 +79,7 @@ public class BankImpl implements BankService {
             System.out.println("Employees info:");
             for (int a = 1; a <= EMPLOYEES_COUNT; a++){
                 Employee employee = employeeService.readEmployee(a);
-                if (Objects.equals(employee.getBankId(), id)){
+                if (Objects.equals(employee.getOfficeId(), office.getId())){
                     System.out.println("*************");
                     System.out.println(employee);
                 }

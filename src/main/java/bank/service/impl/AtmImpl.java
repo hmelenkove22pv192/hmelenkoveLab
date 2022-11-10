@@ -25,6 +25,7 @@ public class AtmImpl implements AtmService {
     public BankATM createATM(Bank bank, BankOffice office, Integer id, String name, Status status, Integer employeeId,
                              Boolean canGiveMoney, Boolean canDepositMoney, Double money, Double cost) {
         bank.setCountATM(bank.getCountATM() + 1);
+        office.setCountATM(office.getCountATM() + 1);
         return atms.put(id, new BankATM(office, id, name, status, employeeId, canGiveMoney, canDepositMoney, money, cost));
     }
 
