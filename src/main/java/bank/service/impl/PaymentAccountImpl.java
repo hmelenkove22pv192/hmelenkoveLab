@@ -5,6 +5,7 @@ import bank.service.PaymentAccountService;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class PaymentAccountImpl implements PaymentAccountService {
     private final Map<Integer, PaymentAccount> pays = new HashMap<>();
@@ -21,7 +22,15 @@ public class PaymentAccountImpl implements PaymentAccountService {
 
     @Override
     public PaymentAccount createPayAcc(Bank bank, User user, Integer id) {
-        bank.setCountClients(bank.getCountOffice() + 1);
+        boolean isUserAlreadyExist = false;
+        for (int i = 1; i <= pays.size(); i++){
+            if (Objects.equals(pays.get(i).getUserId(), user.getIdUser())){
+                isUserAlreadyExist = true;
+            }
+        }
+        if (!isUserAlreadyExist){
+            bank.setCountClients(bank.getCountClients() + 1);
+        }
         return pays.put(id, new PaymentAccount(bank, user, id));
     }
 
