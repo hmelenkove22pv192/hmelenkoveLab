@@ -11,7 +11,6 @@ public class Employee{
     private String jobTitle;
     private String bankName;
     private boolean isDistantWorker;
-    private Integer officeId;
     private boolean canGiveCredit;
     private Double salary;
 
@@ -25,7 +24,6 @@ public class Employee{
         this.setJobTitle(jobTitle);
         this.setBankName();
         this.setIsDistantWorker(isDistantWorker);
-        this.setOfficeId();
         this.setCanGiveCredit(canGiveCredit);
         this.setSalary(salary);
     }
@@ -91,11 +89,7 @@ public class Employee{
     }
 
     public Integer getOfficeId() {
-        return officeId;
-    }
-
-    public void setOfficeId() {
-        this.officeId = office.getId();
+        return office.getId();
     }
 
     public boolean getCanGiveCredit() {
