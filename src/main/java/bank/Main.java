@@ -115,7 +115,6 @@ public class Main {
         CreditAccountService creditAccImpl = CreditAccountImpl.getInstance();
         counter = 0;
         userCounter = 0;
-        int employeesInOneBank = OFFICES_IN_ONE_BANK * EMPLOYEES_IN_ONE_OFFICE;
         for (int i = 1; i <= BANKS_COUNT; i++) {
             for (int j = 1; j <= USERS_IN_ONE_BANK; j++) {
                 userCounter++;
@@ -124,7 +123,7 @@ public class Main {
                     creditAccImpl.createCreditAcc(
                             bankImpl.readBank(i),
                             userImpl.readUser(userCounter),
-                            employeeImpl.readEmployee(i * employeesInOneBank - rnd(0, employeesInOneBank-1)),
+                            employeeImpl.readEmployee(i * EMPLOYEES_IN_ONE_BANK - rnd(0, EMPLOYEES_IN_ONE_BANK-1)),
                             payAccImpl.readPayAcc(a),
                             counter,
                             new Date(),
