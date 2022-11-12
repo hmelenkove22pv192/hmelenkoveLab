@@ -42,7 +42,7 @@ public class Main {
         AtmService atmImpl = AtmImpl.getInstance();
         counter = 0;
         for (int j = 1; j <= OFFICES_COUNT; j++) {
-            for (int a = 1; a <= ATMS_IN_ONE_BANK; a++){
+            for (int a = 1; a <= ATMS_IN_ONE_OFFICE; a++){
                 counter++;
                 atmImpl.createATM(
                         bankImpl.readBank(bankOfficeImpl.readOffice(j).getBankId()),
@@ -63,7 +63,7 @@ public class Main {
         EmployeeService employeeImpl = EmployeeImpl.getInstance();
         counter = 0;
         for (int j = 1; j <= OFFICES_COUNT; j++) {
-            for (int a = 1; a <= EMPLOYEES_IN_ONE_BANK; a++){
+            for (int a = 1; a <= EMPLOYEES_IN_ONE_OFFICE; a++){
                 counter++;
                 employeeImpl.createEmployee(
                         bankImpl.readBank(bankOfficeImpl.readOffice(j).getBankId()),
@@ -100,7 +100,7 @@ public class Main {
         for (int i = 1; i <= BANKS_COUNT; i++) {
             for (int j = 1; j <= USERS_IN_ONE_BANK; j++) {
                 userCounter++;
-                for (int a = 1; a <= PAYS_AND_CREDITS_IN_ONE_BANK; a++) {
+                for (int a = 1; a <= PAYS_AND_CREDITS_IN_ONE_USER; a++) {
                     counter++;
                     payAccImpl.createPayAcc(
                             bankImpl.readBank(i),
@@ -115,15 +115,16 @@ public class Main {
         CreditAccountService creditAccImpl = CreditAccountImpl.getInstance();
         counter = 0;
         userCounter = 0;
+        int employeesInOneBank = OFFICES_IN_ONE_BANK * EMPLOYEES_IN_ONE_OFFICE;
         for (int i = 1; i <= BANKS_COUNT; i++) {
             for (int j = 1; j <= USERS_IN_ONE_BANK; j++) {
                 userCounter++;
-                for (int a = 1; a <= PAYS_AND_CREDITS_IN_ONE_BANK; a++) {
+                for (int a = 1; a <= PAYS_AND_CREDITS_IN_ONE_USER; a++) {
                     counter++;
                     creditAccImpl.createCreditAcc(
                             bankImpl.readBank(i),
                             userImpl.readUser(userCounter),
-                            employeeImpl.readEmployee(i * 15 - rnd(0, 14)),
+                            employeeImpl.readEmployee(i * employeesInOneBank - rnd(0, employeesInOneBank-1)),
                             payAccImpl.readPayAcc(a),
                             counter,
                             new Date(),
