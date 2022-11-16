@@ -1,6 +1,7 @@
 package bank.service;
 
 import bank.entity.User;
+import bank.utils.UserInputException;
 
 import java.util.Date;
 
@@ -39,9 +40,12 @@ public interface UserService {
      * */
     void updateUserWork(User user, String workPlace);
 
+    void searchPlaceForUserCredit(Double moneyForCredit) throws UserInputException;
+
     /**
-     * вывод в консоль всех данных о клиенте
+     * функция создание кредита для клиента
      * @param id экземпляра класса User
+     * @param moneyForCredit деньги, которые клиент хочет взять в кредит
      * */
-    void getUserInfo(Integer id);
+    void giveUserCredit(Integer id, Double moneyForCredit) throws UserInputException;
 }

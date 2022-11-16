@@ -35,17 +35,4 @@ public interface BankService {
      * @param id экземпляра класса Bank
      * */
     Bank readBank(Integer id);
-
-    /**
-     * обновление названия банка
-     * @param bank экземпляр класса Bank
-     * @param name новое название банка
-     * */
-    void updateBankName(Bank bank, String name);
-
-    /**
-     * вывод в консоль всех данных о банке
-     * @param id экземпляра класса Bank
-     * */
-    void getBankInfo(Integer id);
 }
