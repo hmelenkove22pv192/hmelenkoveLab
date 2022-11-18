@@ -50,11 +50,11 @@ public class Main {
                         bankOfficeImpl.readOffice(j),
                         counter,
                         "ATM" + counter,
-                        Status.values()[rnd(0,2)],
+                        Status.WORK,
                         counter,
+                        true,
                         rnd(0,1) == 1,
-                        rnd(0,1) == 1,
-                        500.0,
+                        (double)rnd(10000, 1000000),
                         50.0);
             }
         }
