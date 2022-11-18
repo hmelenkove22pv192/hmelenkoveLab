@@ -40,7 +40,12 @@ public interface UserService {
      * */
     void updateUserWork(User user, String workPlace);
 
-    void searchPlaceForUserCredit(Double moneyForCredit) throws UserInputException;
+    /**
+     * возвращает массив id банка, офиса, сотрудника и atm,
+     * которые могут выдать кредит клиенту
+     * @param moneyForCredit сумма кредита
+     * */
+    int[] searchPlaceForUserCredit(Double moneyForCredit) throws UserInputException;
 
     /**
      * функция создание кредита для клиента

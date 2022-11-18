@@ -54,7 +54,9 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public void searchPlaceForUserCredit(Double moneyForCredit) throws UserInputException {
+    public int[] searchPlaceForUserCredit(Double moneyForCredit) throws UserInputException {
+        // айди которые вернет функция
+        int[] idArray = new int[4];
         Scanner in = new Scanner(System.in);
         // локально сохраняем массив с копией всех банков
         Map<Integer, Bank> banks = new HashMap<>();
@@ -77,6 +79,7 @@ public class UserImpl implements UserService {
             }
             System.out.println("Bank for client:");
             System.out.println(banks.get(bankId));
+            idArray[0] = banks.get(bankId).getId();
             System.out.println("\n");
 
             List<Integer> idList = new ArrayList<>();
@@ -103,9 +106,10 @@ public class UserImpl implements UserService {
                             System.out.printf("%d - %s, address: %s \n", j, office.getName(), office.getAddress());
                             idList.add(j);
                         }
+                        // если офис не подходящий, удаляем из локального массива офисов,
+                        // чтобы клиенту не маячил в списке
                         else {
                             offices.remove(j);
-                            offices = calculateBankOfficeId(j, offices);
                             j--;
                         }
                     j++;
@@ -114,15 +118,15 @@ public class UserImpl implements UserService {
                     System.out.println("Oh, no! In this bank all offices are no suitable :( " +
                             "\n Please, try another bank! \n");
                     banks.remove(bankId);
-                    banks = calculateBankId(bankId, banks);
                 }
                 else {
-                    Integer officeId = in.nextInt();
+                    int officeId = in.nextInt();
                     if (!idList.contains(officeId)){
                         throw new UserInputException("Input a suitable office number");
                     }
                     System.out.println("Office for client:");
                     System.out.println(offices.get(officeId));
+                    idArray[1] = offices.get(officeId).getId();
                     System.out.println("\n");
 
                     idList.clear();
@@ -149,12 +153,10 @@ public class UserImpl implements UserService {
                         System.out.println("Oh, no! In this office all employees are no suitable :(" +
                                 "\n Please, try another office! \n");
                         offices.remove(officeId);
-                        offices = calculateBankOfficeId(officeId, offices);
                         if (offices.size() == 0){
                             System.out.println("Sorry, in this bank all offices are no suitable  " +
                                     "\n Please, try another bank! \n");
                             banks.remove(bankId);
-                            banks = calculateBankId(bankId, banks);
                         }
                     }
                     else {
@@ -164,6 +166,7 @@ public class UserImpl implements UserService {
                         }
                         System.out.println("Employee for client:");
                         System.out.println(employeeService.readEmployee(employeeId));
+                        idArray[2] = employeeService.readEmployee(employeeId).getIdEmployee();
                         System.out.println("\n");
 
                         idList.clear();
@@ -194,13 +197,11 @@ public class UserImpl implements UserService {
                             System.out.println("Oh, no! In this office all ATMs are no suitable :(" +
                                     "\n Please, try another office! \n");
                             offices.remove(officeId);
-                            offices = calculateBankOfficeId(officeId, offices);
 
                             if (offices.size() == 0){
                                 System.out.println("Sorry, in this bank all offices are no suitable  " +
                                         "\n Please, try another bank! \n");
                                 banks.remove(bankId);
-                                banks = calculateBankId(bankId, banks);
                             }
                         }
                         else {
@@ -210,6 +211,7 @@ public class UserImpl implements UserService {
                             }
                             System.out.println("ATM for client:");
                             System.out.println(atmService.readATM(atmId));
+                            idArray[3] = atmService.readATM(atmId).getId();
                             System.out.println("\n");
                         }
                     }
@@ -219,10 +221,59 @@ public class UserImpl implements UserService {
         if (banks.size() == 0) {
             throw new UserInputException("Oh, no! There is no suitable banks");
         }
+        return idArray;
     }
 
     @Override
     public void giveUserCredit(Integer id, Double moneyForCredit) throws UserInputException {
-        searchPlaceForUserCredit(moneyForCredit);
+        int[] idArray = searchPlaceForUserCredit(moneyForCredit);
+        User user = users.get(id);
+        Bank bank = bankService.readBank(idArray[0]);
+        Scanner in = new Scanner(System.in);
+        // проверяем есть ли у клиента счет в банке, если нет, то заводим
+        boolean isUserClient = false;
+        int payAccId = 0;
+//        for (int i = 1; i <= PAYS_AND_CREDITS_COUNT; i++){
+//            if (Objects.equals(payService.readPayAcc(i).getUserId(), id)){
+//                isUserClient = true;
+//                payAccId = payService.readPayAcc(i).getIdPayAcc();
+//            }
+//        }
+        if (!isUserClient){
+            System.out.println("You haven't a pay account in our bank! Do you want to crate it? \n");
+            System.out.println("1 - yes \n");
+            System.out.println("1 - no \n");
+            if (in.nextInt() == 1){
+                payAccId = PAYS_AND_CREDITS_COUNT + 1;
+                payService.createPayAcc(bank, user, payAccId);
+            }
+            else {
+                throw new UserInputException("Sorry, we can't give your a credit without pay account!");
+            }
+        }
+        else {
+            System.out.println("Your pay account:");
+            System.out.println(payService.readPayAcc(payAccId));
+            if (user.getCreditRating() < 5000 && bank.getRating() > 50){
+                throw new UserInputException("Sorry, you have too bad rating for our bank! Bye!");
+            }
+            else {
+                System.out.println("Almost done! Please input count of months for your credit");
+                int countMonths = in.nextInt();
+                creditService.createCreditAcc(
+                        bank,
+                        user,
+                        employeeService.readEmployee(idArray[2]),
+                        payService.readPayAcc(payAccId),
+                        PAYS_AND_CREDITS_COUNT + 1,
+                        new Date(),
+                        new Date(),
+                        countMonths,
+                        moneyForCredit,
+                        moneyForCredit/countMonths);
+                System.out.println("Your credit done!");
+                System.out.println(creditService.readCreditAcc(PAYS_AND_CREDITS_COUNT + 1));
+            }
+        }
     }
 }
