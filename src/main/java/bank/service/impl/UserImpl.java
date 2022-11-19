@@ -86,10 +86,6 @@ public class UserImpl implements UserService {
                                 if (Objects.equals(employee.getOfficeId(), officeIndex)) {
                                     // умеет выдавать кредиты?
                                     if (employee.getCanGiveCredit()) {
-                                        // этот сотрудник еще не сохранен?
-                                        if (!employees.containsValue(employeeService.readEmployee(employeeIndex))){
-                                            employees.put(employees.size() + 1, employee);
-                                        }
                                         // поиск atm
                                         for (int atmIndex = 1; atmIndex <= ATMS_COUNT; atmIndex++) {
                                             BankATM atm = atmService.readATM(atmIndex);
@@ -106,6 +102,10 @@ public class UserImpl implements UserService {
                                                     // этот офис еще не сохранен?
                                                     if (!offices.containsValue(officeService.readOffice(officeIndex))){
                                                         offices.put(offices.size() + 1, office);
+                                                    }
+                                                    // этот сотрудник еще не сохранен?
+                                                    if (!employees.containsValue(employeeService.readEmployee(employeeIndex))){
+                                                        employees.put(employees.size() + 1, employee);
                                                     }
                                                     // этот atm еще не сохранен?
                                                     if (!atms.containsValue(atmService.readATM(atmIndex))){
