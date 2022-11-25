@@ -108,15 +108,9 @@ public class BankATM {
 
     public String toString(){
        return (
-                   "id: " + getId() + "\n" +
                    "name: " + getName() + "\n" +
                    "address: " + getAddress() + "\n" +
-                   "status: " + getStatus() + "\n" +
-                   "employeeId: " + getEmployeeId() + "\n" +
-                   "canGiveMoney: " + getCanGiveMoney() + "\n" +
-                   "canDepositMoney: " + getCanDepositMoney() + "\n" +
-                   "money: " + getMoney() + "\n" +
-                   "cost: " + getCost()
+                   "status: " + getStatus() + "\n"
                );
     }
 }

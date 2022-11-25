@@ -52,5 +52,5 @@ public interface UserService {
      * @param id экземпляра класса User
      * @param moneyForCredit деньги, которые клиент хочет взять в кредит
      * */
-    void giveUserCredit(Integer id, Double moneyForCredit) throws UserInputException;
+    boolean giveUserCredit(Integer id, Double moneyForCredit) throws UserInputException;
 }

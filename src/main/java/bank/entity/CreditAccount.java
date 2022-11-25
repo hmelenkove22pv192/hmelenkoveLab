@@ -1,7 +1,5 @@
 package bank.entity;
 
-import java.util.Date;
-
 public class CreditAccount {
     private User user;
     private Bank bank;
@@ -10,8 +8,8 @@ public class CreditAccount {
     private Integer id;
     private String userName;
     private String bankName;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private Integer countMonth;
     private Double creditSum;
     private Double interestRate;
@@ -20,7 +18,7 @@ public class CreditAccount {
     private Integer paymentAccountId;
 
     public CreditAccount(Bank bank, User user, Employee employee, PaymentAccount paymentAccount,
-                         Integer id, Date startDate, Date endDate, Integer countMonth,
+                         Integer id, String startDate, String endDate, Integer countMonth,
                          Double creditSum, Double monthPay) {
         setBank(bank);
         setUser(user);
@@ -81,19 +79,19 @@ public class CreditAccount {
         this.bankName = bank.getName();
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

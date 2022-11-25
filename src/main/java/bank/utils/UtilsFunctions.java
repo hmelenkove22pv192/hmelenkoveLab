@@ -1,11 +1,5 @@
 package bank.utils;
 
-import bank.entity.Bank;
-import bank.entity.BankOffice;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class UtilsFunctions {
     /**
      * Метод получения псевдослучайного целого числа от min до max (включая max);
@@ -14,5 +8,10 @@ public class UtilsFunctions {
     {
         max -= min;
         return (int) (Math.random() * ++max) + min;
+    }
+
+    public static boolean getRandomBooleanValue()
+    {
+        return rnd(0,1) == 1;
     }
 }

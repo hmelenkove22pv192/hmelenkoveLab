@@ -8,6 +8,7 @@ import bank.utils.UserInputException;
 import java.util.Date;
 
 import static bank.utils.Constants.*;
+import static bank.utils.UtilsFunctions.getRandomBooleanValue;
 import static bank.utils.UtilsFunctions.rnd;
 
 public class Main {
@@ -28,11 +29,11 @@ public class Main {
                         counter,
                         "office_name" + counter,
                         "address" + counter,
-                        Status.values()[rnd(0,1)],
-                        rnd(0,1) == 1,
-                        rnd(0,1) == 1,
-                        rnd(0,1) == 1,
-                        rnd(0,1) == 1,
+                        Status.values()[rnd(0,2)],
+                        getRandomBooleanValue(),
+                        getRandomBooleanValue(),
+                        getRandomBooleanValue(),
+                        getRandomBooleanValue(),
                         (double)rnd(10000, 1000000),
                         5.0);
             }
@@ -53,7 +54,7 @@ public class Main {
                         Status.WORK,
                         counter,
                         true,
-                        rnd(0,1) == 1,
+                        getRandomBooleanValue(),
                         (double)rnd(10000, 1000000),
                         50.0);
             }
@@ -73,8 +74,8 @@ public class Main {
                         "Employee" + counter,
                         new Date(),
                         "job" + counter,
-                        rnd(0,1) == 1,
-                        rnd(0,1) == 1,
+                        getRandomBooleanValue(),
+                        getRandomBooleanValue(),
                         100.000);
             }
         }
@@ -95,6 +96,10 @@ public class Main {
         }
 
         // Механизм получения кредита на примере 1 Клиента
-        userImpl.giveUserCredit(1, 100000.00);
+        boolean isUserOk = false;
+        while (!isUserOk){
+            int index = rnd(1, USERS_COUNT);
+            isUserOk = userImpl.giveUserCredit(index, 100000.00);
+        }
     }
 }

@@ -2,8 +2,6 @@ package bank.service;
 
 import bank.entity.*;
 
-import java.util.Date;
-
 public interface CreditAccountService {
     /**
      * создание экземпляра класса CreditAccount
@@ -18,7 +16,7 @@ public interface CreditAccountService {
      * @param monthPay ежемесячный платеж
      * */
     CreditAccount createCreditAcc(Bank bank, User user, Employee employee, PaymentAccount paymentAccount,
-                                         Integer id, Date startDate, Date endDate, Integer countMonth,
+                                         Integer id, String startDate, String endDate, Integer countMonth,
                                          Double creditSum, Double monthPay);
     /**
      * возвращает экземпляр класса CreditAccount
