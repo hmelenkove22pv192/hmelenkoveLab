@@ -38,7 +38,6 @@ public class Main {
                         5.0);
             }
         }
-        bankImpl.setOfficeService(bankOfficeImpl);
 
         //BankAtm
         AtmService atmImpl = AtmImpl.getInstance();
@@ -59,7 +58,6 @@ public class Main {
                         50.0);
             }
         }
-        bankImpl.setAtmService(atmImpl);
 
         //Employee
         EmployeeService employeeImpl = EmployeeImpl.getInstance();
@@ -79,7 +77,6 @@ public class Main {
                         100.000);
             }
         }
-        bankImpl.setEmployeeService(employeeImpl);
 
         //User
         UserService userImpl = UserImpl.getInstance();

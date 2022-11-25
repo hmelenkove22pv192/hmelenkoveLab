@@ -210,8 +210,6 @@ public class UserImpl implements UserService {
 //        }
         if (user.getCreditRating() < 5000 && bank.getRating() > 50) {
             System.out.println("Sorry, you have too bad rating for our bank! Do you want try again?");
-            System.out.println(user.getCreditRating());
-            System.out.println(bank.getRating());
             System.out.println("1 - yes \n");
             System.out.println("0 - no \n");
             if (in.nextInt() == 0) {

@@ -1,21 +1,12 @@
 package bank.service.impl;
 
 import bank.entity.Bank;
-import bank.entity.BankATM;
-import bank.entity.BankOffice;
-import bank.entity.Employee;
-import bank.service.*;
+import bank.service.BankService;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-
-import static bank.utils.Constants.*;
 
 public class BankImpl implements BankService {
-    private AtmService atmService = AtmImpl.getInstance();
-    private BankOfficeService officeService = BankOfficeImpl.getInstance();
-    private EmployeeService employeeService = EmployeeImpl.getInstance();
     private final Map<Integer, Bank>  banks = new HashMap<>();
 
     // реализация Singleton
@@ -26,19 +17,6 @@ public class BankImpl implements BankService {
             instance = new BankImpl();
         }
         return instance;
-    }
-
-    @Override
-    public void setAtmService(AtmService atmService) {
-        this.atmService = atmService;
-    }
-    @Override
-    public void setOfficeService(BankOfficeService officeService) {
-        this.officeService = officeService;
-    }
-    @Override
-    public void setEmployeeService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
     }
 
     @Override
