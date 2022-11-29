@@ -109,30 +109,6 @@ public class Main {
             }
         }
 
-        //CreditAccount
-        CreditAccountService creditAccImpl = CreditAccountImpl.getInstance();
-        counter = 0;
-        userCounter = 0;
-        for (int i = 1; i <= BANKS_COUNT; i++) {
-            for (int j = 1; j <= USERS_IN_ONE_BANK; j++) {
-                userCounter++;
-                for (int a = 1; a <= PAYS_AND_CREDITS_IN_ONE_USER; a++) {
-                    counter++;
-                    creditAccImpl.createCreditAcc(
-                            bankImpl.readBank(i),
-                            userImpl.readUser(userCounter),
-                            employeeImpl.readEmployee(i * EMPLOYEES_IN_ONE_BANK - rnd(0, EMPLOYEES_IN_ONE_BANK-1)),
-                            payAccImpl.readPayAcc(a),
-                            counter,
-                            new Date(),
-                            new Date(),
-                            82,
-                            200.000,
-                            30.000);
-                }
-            }
-        }
-
         // вывод всех счетов пользователя в текстовый файл
         userImpl.getUserPaysInfo(rnd(1, USERS_COUNT));
 
