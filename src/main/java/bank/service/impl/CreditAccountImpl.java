@@ -3,7 +3,6 @@ package bank.service.impl;
 import bank.entity.*;
 import bank.service.CreditAccountService;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,8 +20,8 @@ public class CreditAccountImpl implements CreditAccountService {
 
     @Override
     public CreditAccount createCreditAcc(Bank bank, User user, Employee employee,
-                                         PaymentAccount paymentAccount, Integer id, Date startDate,
-                                         Date endDate, Integer countMonth, Double creditSum, Double monthPay) {
+                                         PaymentAccount paymentAccount, Integer id, String startDate,
+                                         String endDate, Integer countMonth, Double creditSum, Double monthPay) {
         return credits.put(id, new CreditAccount(bank, user, employee, paymentAccount, id, startDate,
                 endDate, countMonth, creditSum, monthPay));
     }

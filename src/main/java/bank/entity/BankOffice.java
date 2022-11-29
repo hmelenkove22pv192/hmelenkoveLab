@@ -128,17 +128,10 @@ public class BankOffice {
 
     public String toString(){
         return (
-                    "id: " + getId() + "\n" +
                     "name: " + getName() + "\n" +
                     "address: " + getAddress() + "\n" +
-                    "countATM: " + getCountATM() + "\n" +
                     "status: " + getStatus() + "\n" +
-                    "canSetATM: " + getCanSetATM() + "\n" +
-                    "canTakeCredit: " + getCanTakeCredit() + "\n" +
-                    "canGiveMoney: " + getCanGiveMoney() + "\n" +
-                    "canDepositMoney: " + getCanDepositMoney() + "\n" +
-                    "money: " + getMoney() + "\n" +
-                    "cost: " + getCost()
+                    "canTakeCredit: " + getCanTakeCredit() + "\n"
                 );
     }
 }

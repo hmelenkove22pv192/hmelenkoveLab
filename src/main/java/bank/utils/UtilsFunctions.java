@@ -9,4 +9,9 @@ public class UtilsFunctions {
         max -= min;
         return (int) (Math.random() * ++max) + min;
     }
+
+    public static boolean getRandomBooleanValue()
+    {
+        return rnd(0,1) == 1;
+    }
 }

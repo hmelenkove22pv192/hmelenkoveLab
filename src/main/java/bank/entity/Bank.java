@@ -113,13 +113,7 @@ public class Bank {
         return (
                     "id: " + getId() + "\n" +
                     "name: " + getName() + "\n" +
-                    "countOffice: " + getCountOffice() + "\n" +
-                    "countATM: " + getCountATM() + "\n" +
-                    "countEmployees: " + getCountEmployees() + "\n" +
-                    "countClients: " + getCountClients() + "\n" +
-                    "rating: " + getRating() + "\n" +
-                    "money: " + getMoney() + "\n" +
-                    "interestRate: " + getInterestRate()
+                    "money: " + getMoney() + "\n"
                 );
     }
 }

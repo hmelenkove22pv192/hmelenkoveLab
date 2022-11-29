@@ -110,15 +110,8 @@ public class Employee{
 
     public String toString(){
         return (
-                    "id: " + getIdEmployee() + "\n" +
                     "fullName: " + getFullName() + "\n" +
-                    "birthDay: " + getBirthDay() + "\n" +
-                    "bankName: " + getBankName() + "\n" +
-                    "jobTitle: " + getJobTitle() + "\n" +
-                    "isDistantWorker: " + getIsDistantWorker() + "\n" +
-                    "Office: " + getOfficeId() + "\n" +
-                    "canGiveCredit: " + getCanGiveCredit() + "\n" +
-                    "salary: " + getSalary()
+                    "canGiveCredit: " + getCanGiveCredit() + "\n"
                 );
     }
 }

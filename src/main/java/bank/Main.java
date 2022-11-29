@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Date;
 
 import static bank.utils.Constants.*;
+import static bank.utils.UtilsFunctions.getRandomBooleanValue;
 import static bank.utils.UtilsFunctions.rnd;
 
 public class Main {
@@ -28,12 +29,12 @@ public class Main {
                         counter,
                         "office_name" + counter,
                         "address" + counter,
-                        Status.WORK,
-                        true,
-                        true,
-                        true,
-                        true,
-                        0.0,
+                        Status.values()[rnd(0,2)],
+                        getRandomBooleanValue(),
+                        getRandomBooleanValue(),
+                        getRandomBooleanValue(),
+                        getRandomBooleanValue(),
+                        (double)rnd(10000, 1000000),
                         5.0);
             }
         }
@@ -52,8 +53,8 @@ public class Main {
                         Status.WORK,
                         counter,
                         true,
-                        true,
-                        500.0,
+                        getRandomBooleanValue(),
+                        (double)rnd(10000, 1000000),
                         50.0);
             }
         }
@@ -71,8 +72,8 @@ public class Main {
                         "Employee" + counter,
                         new Date(),
                         "job" + counter,
-                        true,
-                        true,
+                        getRandomBooleanValue(),
+                        getRandomBooleanValue(),
                         100.000);
             }
         }

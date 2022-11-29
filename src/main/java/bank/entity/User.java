@@ -3,6 +3,8 @@ package bank.entity;
 import java.util.Date;
 import java.util.Random;
 
+import static bank.utils.UtilsFunctions.rnd;
+
 public class User{
     private Integer id;
     private String fullName;
@@ -16,20 +18,8 @@ public class User{
         this.setFullName(fullName);
         this.setBirthDay(birthDay);
         this.setWorkPlace(workPlace);
-        Random random = new Random();
-        this.setMonthSalary(random.nextDouble(1, 10000));
-        int creditRating = 0;
-        Integer min = 0;
-        Integer max = 1000;
-        while ((min != 10000) && (creditRating == 0)) {
-            if ((getMonthSalary() <= max) && (getMonthSalary() >= min))
-                creditRating = max / 10;
-            else {
-                min += 1000;
-                max += 1000;
-            }
-        }
-        this.setCreditRating(creditRating);
+        this.setMonthSalary((double)rnd(30000, 100000));
+        this.setCreditRating(rnd(1000, 10000));
     }
 
     public Integer getIdUser() {
