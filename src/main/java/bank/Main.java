@@ -4,13 +4,14 @@ import bank.service.*;
 import bank.service.impl.*;
 import bank.utils.Status;
 
+import java.io.IOException;
 import java.util.Date;
 
 import static bank.utils.Constants.*;
 import static bank.utils.UtilsFunctions.rnd;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //Bank
         BankService bankImpl = BankImpl.getInstance();
         for (int i = 1; i <= BANKS_COUNT; i++) {
@@ -36,7 +37,6 @@ public class Main {
                         5.0);
             }
         }
-        bankImpl.setOfficeService(bankOfficeImpl);
 
         //BankAtm
         AtmService atmImpl = AtmImpl.getInstance();
@@ -57,7 +57,6 @@ public class Main {
                         50.0);
             }
         }
-        bankImpl.setAtmService(atmImpl);
 
         //Employee
         EmployeeService employeeImpl = EmployeeImpl.getInstance();
@@ -77,7 +76,6 @@ public class Main {
                         100.000);
             }
         }
-        bankImpl.setEmployeeService(employeeImpl);
 
         //User
         UserService userImpl = UserImpl.getInstance();
@@ -109,7 +107,6 @@ public class Main {
                 }
             }
         }
-        userImpl.setPayService(payAccImpl);
 
         //CreditAccount
         CreditAccountService creditAccImpl = CreditAccountImpl.getInstance();
@@ -134,25 +131,11 @@ public class Main {
                 }
             }
         }
-        userImpl.setCreditService(creditAccImpl);
 
-        // вывод информации о банке
-        for (int i = 1; i <= BANKS_COUNT; i++) {
-            System.out.println("----------------------");
-            System.out.println("Bank" + i + "\n");
-            System.out.println(bankImpl.readBank(i));
-            bankImpl.getBankInfo(i);
-            System.out.println("\n");
-            System.out.println("----------------------");
-        }
-        // вывод информации о клиенте
-        for (int i = 1; i <= USERS_COUNT; i++) {
-            System.out.println("----------------------");
-            System.out.println("User" + i + "\n");
-            System.out.println(userImpl.readUser(i));
-            userImpl.getUserInfo(i);
-            System.out.println("\n");
-            System.out.println("----------------------");
-        }
+        // вывод всех счетов пользователя в текстовый файл
+        userImpl.getUserPaysInfo(rnd(1, USERS_COUNT));
+
+        // перенос счета из одного банка в другой
+        PaymentAccountImpl.transitAcc();
     }
 }

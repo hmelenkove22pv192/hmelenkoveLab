@@ -5,23 +5,6 @@ import bank.entity.Bank;
 import java.util.Map;
 
 public interface BankService {
-    /**
-     * сохраняет ссылку на объект банкоматов
-     * @param atmService экземпляра класса AtmService
-     * */
-    void setAtmService(AtmService atmService);
-
-    /**
-     * сохраняет ссылку на объект оффисов
-     * @param officeService экземпляра класса BankOfficeService
-     * */
-    void setOfficeService(BankOfficeService officeService);
-
-    /**
-     * сохраняет ссылку на объект сотрудников
-     * @param employeeService экземпляра класса EmployeeService
-     * */
-    void setEmployeeService(EmployeeService employeeService);
 
     /**
      * создание экземпляра класса Bank
@@ -42,10 +25,4 @@ public interface BankService {
      * @param name новое название банка
      * */
     void updateBankName(Bank bank, String name);
-
-    /**
-     * вывод в консоль всех данных о банке
-     * @param id экземпляра класса Bank
-     * */
-    void getBankInfo(Integer id);
 }

@@ -2,6 +2,7 @@ package bank.service;
 
 import bank.entity.User;
 
+import java.io.IOException;
 import java.util.Date;
 
 public interface UserService {
@@ -40,8 +41,8 @@ public interface UserService {
     void updateUserWork(User user, String workPlace);
 
     /**
-     * вывод в консоль всех данных о клиенте
+     * вывод в текстовый файл всех данных о платежных счетах клиента
      * @param id экземпляра класса User
      * */
-    void getUserInfo(Integer id);
+    void getUserPaysInfo(Integer id) throws IOException;
 }

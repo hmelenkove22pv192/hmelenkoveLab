@@ -66,7 +66,7 @@ public class PaymentAccount{
                     "id: " + getIdPayAcc() + "\n" +
                     "money: " + getMoney() + "\n" +
                     "user: " + getUserName() + "\n" +
-                    "bankName: " + getBankName()
+                    "bankName: " + getBankName() + "\n" + "\n"
                 );
     }
 }

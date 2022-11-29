@@ -3,6 +3,8 @@ package bank.service.impl;
 import bank.entity.*;
 import bank.service.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,23 +52,19 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public void getUserInfo(Integer id) {
+    public void getUserPaysInfo(Integer id) throws IOException {
         System.out.println("\n");
-        System.out.println("Payment accounts");
         for (int i = 1; i <= PAYS_AND_CREDITS_COUNT; i++){
             PaymentAccount pay = payService.readPayAcc(i);
             if (Objects.equals(pay.getUserId(), id)){
-                System.out.println("*************");
-                System.out.println(pay);
-            }
-        }
-        System.out.println("\n");
-        System.out.println("Credit accounts");
-        for (int j = 1; j <= PAYS_AND_CREDITS_COUNT; j++){
-            CreditAccount credit = creditService.readCreditAcc(j);
-            if (Objects.equals(credit.getUserId(), id)){
-                System.out.println("*************");
-                System.out.println(credit);
+                try(FileWriter writer = new FileWriter("pays.txt", true))
+                {
+                    writer.write(pay.toString());
+                    writer.flush();
+                }
+                catch(IOException ex){
+                    System.out.println(ex.getMessage());
+                }
             }
         }
     }

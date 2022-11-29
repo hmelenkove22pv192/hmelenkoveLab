@@ -23,4 +23,5 @@ public interface PaymentAccountService {
      * @param money новая сумма
      * */
     void updateMoney(PaymentAccount payAcc, Double money);
+
 }
