@@ -156,7 +156,7 @@ public class CreditAccount {
                     "employee: " + getEmployeeName() + "\n" +
                     "interestRate: " + getInterestRate() + "\n" +
                     "monthPay: " + getMonthPay() + "\n" +
-                    "paymentAccountId: " + getPaymentAccountId()
+                    "paymentAccountId: " + getPaymentAccountId()  + "\n"  + "\n"
                 );
     }
 }

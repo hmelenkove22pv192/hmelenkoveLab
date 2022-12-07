@@ -5,6 +5,8 @@ import bank.service.impl.*;
 import bank.utils.Status;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import static bank.utils.Constants.*;
@@ -108,6 +110,35 @@ public class Main {
                 }
             }
         }
+
+//        //CreditAccount
+//        CreditAccountService creditAccImpl = CreditAccountImpl.getInstance();
+//        counter = 0;
+//        userCounter = 0;
+//        for (int i = 1; i <= BANKS_COUNT; i++) {
+//            for (int j = 1; j <= USERS_IN_ONE_BANK; j++) {
+//                userCounter++;
+//                for (int a = 1; a <= PAYS_AND_CREDITS_IN_ONE_USER; a++) {
+//                    counter++;
+//                    int countMonths = rnd(5,15);
+//                    Calendar dateStart = Calendar.getInstance();
+//                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+//                    Calendar dateEnd = Calendar.getInstance();
+//                    dateEnd.add(Calendar.MONTH, countMonths);
+//                    creditAccImpl.createCreditAcc(
+//                            bankImpl.readBank(i),
+//                            userImpl.readUser(userCounter),
+//                            employeeImpl.readEmployee(i * EMPLOYEES_IN_ONE_BANK - rnd(0, EMPLOYEES_IN_ONE_BANK-1)),
+//                            payAccImpl.readPayAcc(a),
+//                            counter,
+//                            formatter.format(dateStart.getTime()),
+//                            formatter.format(dateEnd.getTime()),
+//                            82,
+//                            200.000,
+//                            30.000);
+//                }
+//            }
+//        }
 
         // вывод всех счетов пользователя в текстовый файл
         userImpl.getUserPaysInfo(rnd(1, USERS_COUNT));

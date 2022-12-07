@@ -54,18 +54,48 @@ public class UserImpl implements UserService {
     @Override
     public void getUserPaysInfo(Integer id) throws IOException {
         System.out.println("\n");
-        for (int i = 1; i <= PAYS_AND_CREDITS_COUNT; i++){
-            PaymentAccount pay = payService.readPayAcc(i);
-            if (Objects.equals(pay.getUserId(), id)){
-                try(FileWriter writer = new FileWriter("pays.txt", true))
-                {
+        // очищаем файл от данных прошлого запуска
+        try(FileWriter writer = new FileWriter("pays.txt", false))
+        {
+            writer.write('\n');
+            writer.flush();
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+
+        try(FileWriter writer = new FileWriter("pays.txt", true))
+        {
+            // запись в файл платежных счетов
+            writer.write("Pays accounts: \n");
+            for (int i = 1; i <= PAYS_AND_CREDITS_COUNT; i++){
+                PaymentAccount pay = payService.readPayAcc(i);
+                if (Objects.equals(pay.getUserId(), id)){
                     writer.write(pay.toString());
                     writer.flush();
                 }
-                catch(IOException ex){
-                    System.out.println(ex.getMessage());
+            }
+
+            // запись в файл кредитов
+            boolean isUserHasCredits = false;
+            writer.write("Credit accounts: \n");
+            for (int i = 1; i <= PAYS_AND_CREDITS_COUNT; i++){
+                CreditAccount credit = creditService.readCreditAcc(i);
+                if (credit != null){
+                    if (Objects.equals(credit.getUserId(), id)){
+                        isUserHasCredits = true;
+                        writer.write(credit.toString());
+                        writer.flush();
+                    }
                 }
             }
+            if (!isUserHasCredits){
+                writer.write("User has not credits");
+                writer.flush();
+            }
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
         }
     }
 
