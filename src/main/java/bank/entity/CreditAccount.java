@@ -154,7 +154,6 @@ public class CreditAccount {
                     "creditSum: " + getCreditSum() + "\n" +
                     "interestRate: " + getInterestRate() + "\n" +
                     "employee: " + getEmployeeName() + "\n" +
-                    "interestRate: " + getInterestRate() + "\n" +
                     "monthPay: " + getMonthPay() + "\n" +
                     "paymentAccountId: " + getPaymentAccountId()
                 );

@@ -246,7 +246,7 @@ public class UserImpl implements UserService {
                     formatter.format(dateEnd.getTime()),
                     countMonths,
                     moneyForCredit,
-                    moneyForCredit / countMonths);
+                    (moneyForCredit + moneyForCredit * (bank.getInterestRate() / 100)) / countMonths);
             System.out.println("Your credit done!");
             System.out.println(creditService.readCreditAcc(PAYS_AND_CREDITS_COUNT + 1));
             isItDone = true;
